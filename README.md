@@ -1,6 +1,6 @@
-*** You must install the JAVA SDK to use this tool ***
+## You must install the *JAVA SDK* to use this tool
 
-Simple Usage:
+### Simple Usage:
 
 1. Login:
    ...
@@ -26,10 +26,10 @@ Simple Usage:
    ...
    
    
-Examples of how to use the API can be found at:
-org/rapid7/nexpose/api/examples
+### Examples of how to use the API can be found at:
+*org/rapid7/nexpose/api/examples*
 
-To run an example from the command line:
+### To run an example from the command line:
 1. Compile:
    javac org/rapid7/nexpose/api/examples/<Class_Name>.java
    
