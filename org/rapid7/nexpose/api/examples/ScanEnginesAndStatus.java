@@ -45,7 +45,7 @@ public class ScanEnginesAndStatus
    /**
     * Body of the API call.
     */
-   public void deleteUserByNameOrID(String[] args) throws IOException, APIException
+   public void scanEnginesAndStatus(String[] args) throws IOException, APIException
    {      
       // ALWAYS LOGIN BEFORE OPERATIONS.
       APISession session = getSession(args);
@@ -98,6 +98,6 @@ public class ScanEnginesAndStatus
          return;
       }
       
-      new ScanEnginesAndStatus().deleteUserByNameOrID(args);
+      new ScanEnginesAndStatus().scanEnginesAndStatus(args);
    }
 }
