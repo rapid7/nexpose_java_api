@@ -1,5 +1,6 @@
 # Nexpose JAVA API
-_**This tool is made available to aid users in developing software that uses the Nexpose API.**_
+_**This tool is made available to aid users in developing software that uses the Nexpose API.**_  
+_**This software is not officially supported by Rapid7 and is made available for the community without warranty**_
 
 ## Recommendations
 - You must install the [JAVA SDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk-7u3-download-1501626.html) to use this tool
