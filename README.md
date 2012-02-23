@@ -1,8 +1,9 @@
-## You must install the *JAVA SDK* to use this tool
+##You must install the *JAVA SDK* to use this tool
 
-### Simple Usage:
+###Simple Usage:
 
 1. Login:
+   ```java
    ...
    // Create a URL that points to your nexpose instance.
    URL url = new URL("https://<nexpose_netaddress>:<nexpose_port>");
@@ -14,6 +15,7 @@
    // Now login
    session.login(null);
    ...
+   ```
    
 2. Perform one or many operations:
    ...   
@@ -21,9 +23,11 @@
    ...
    
 3. Logout
+   ```java
    ...
    session.logout(session.getSessionID(), null);
    ...
+   ```
    
    
 ### Examples of how to use the API can be found at:
