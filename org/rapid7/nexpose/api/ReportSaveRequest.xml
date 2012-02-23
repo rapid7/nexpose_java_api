@@ -1,0 +1,17 @@
+<ReportSaveRequest session-id="${session-id}" sync-id="${sync-id}" generate-now="${generate-now}">
+  <ReportConfig
+          id="${id}"
+          name="${name}"
+          ${templateIDGenerator}
+          format="${format}"
+          owner="${owner}"
+          timezone="${timezone}"
+          description="${description}">
+      ${filtersGenerator}
+      ${baselineGenerator}
+      ${generateGenerator}
+      ${scheduleGenerator}
+      ${deliveryGenerator}
+      ${dbExportGenerator}
+  </ReportConfig>
+</ReportSaveRequest>

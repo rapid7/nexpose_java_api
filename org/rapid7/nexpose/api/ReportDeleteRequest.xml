@@ -1,0 +1,1 @@
+<ReportDeleteRequest reportcfg-id="${reportcfg-id}" report-id="${report-id}" session-id="${session-id}" sync-id="${sync-id}"/> 

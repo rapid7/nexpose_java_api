@@ -1,0 +1,19 @@
+<SiteSaveRequest session-id="${session-id}" sync-id="${sync-id}">
+   <Site id="${siteId}" name="${siteName}" description="${siteDescription}" riskfactor="${siteRiskFactor}">
+      <Hosts>
+         ${siteHostsHostGenerator}
+         ${siteHostsRangeGenerator}
+      </Hosts>
+      <Alerting>
+         ${alertsGenerator}
+      </Alerting>
+      <ScanConfig name="${siteScanConfigName}" configVersion="${siteScanConfigConfigVersion}" configId="${siteScanConfigConfigId}" templateID="${siteScanConfigTemplateId}" engineID="${siteScanConfigEngineID}">
+         <Schedules>
+            <Schedule enabled="${scheduleEnabled}" incremental="${scheduleIncremental}" type="${scheduleType}" interval="${scheduleInterval}" start="${scheduleStart}" maxDuration="${scheduleMaxDuration}" notValidAfter="${scheduleNotValidAfter}"/>
+         </Schedules>
+      </ScanConfig>
+      <Credentials>
+         ${credentialsGenerator}
+      </Credentials>
+   </Site>
+</SiteSaveRequest>

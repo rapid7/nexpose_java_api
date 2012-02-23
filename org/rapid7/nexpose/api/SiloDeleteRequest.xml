@@ -1,0 +1,1 @@
+<SiloDeleteRequest session-id="${session-id}" sync-id="${sync-id}" silo-id="${siloId}"/>

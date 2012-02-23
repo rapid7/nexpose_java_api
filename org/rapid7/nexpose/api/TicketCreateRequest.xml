@@ -1,0 +1,12 @@
+<TicketCreateRequest 
+   session-id="${session-id}"
+   sync-id="${sync-id}">
+   <TicketCreate
+      name="${ticketName}"
+      priority="${ticketPriority}"
+      device-id="${ticketDeviceId}"
+      assigned-to="${tikcetAssignedTo}">
+      ${vulnerabilitiesGenerator}
+      ${commentsGenerator}
+   </TicketCreate>
+</TicketCreateRequest>

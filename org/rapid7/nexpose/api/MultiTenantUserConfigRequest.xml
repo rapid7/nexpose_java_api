@@ -1,0 +1,5 @@
+<MultiTenantUserConfigRequest 
+   session-id="${session-id}" 
+   sync-id="${sync-id}"
+   user-id="${user-id}"
+   />

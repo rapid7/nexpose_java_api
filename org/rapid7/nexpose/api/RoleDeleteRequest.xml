@@ -1,0 +1,3 @@
+<RoleDeleteRequest session-id="${session-id}" sync-id="${sync-id}">
+   <Role name="${roleName}" scope="${scope}"/>
+</RoleDeleteRequest>  

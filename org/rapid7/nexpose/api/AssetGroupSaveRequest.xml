@@ -1,0 +1,7 @@
+<AssetGroupSaveRequest sync-id="${sync-id}" session-id="${session-id}">
+   <AssetGroup id="${assetGroupId}" name="${assetGroupName}" description="${assetGroupDescription}" riskscore="${assetGroupRiskScore}">
+      <Devices>
+        ${devicesGenerator}
+     </Devices>
+   </AssetGroup >
+</AssetGroupSaveRequest>

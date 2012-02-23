@@ -1,0 +1,14 @@
+<MultiTenantUserUpdateRequest session-id="${session-id}" sync-id="${sync-id}">
+   <MultiTenantUserConfig
+      authsrcid="${authSrcId}"
+      email="${email}"
+      password="${password}"
+      enabled="${enabled}"
+      full-name="${full-name}"
+      id="${id}"
+      user-name="${user-name}"
+      superuser="${superuser}"
+   >
+      ${siloAccessGenerator}
+   </MultiTenantUserConfig>
+</MultiTenantUserUpdateRequest>

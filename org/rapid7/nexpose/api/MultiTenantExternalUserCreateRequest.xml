@@ -1,0 +1,12 @@
+<MultiTenantUserCreateRequest session-id="${session-id}" sync-id="${sync-id}">
+   <MultiTenantUserConfig
+      authsrcid="${authSrcId}"
+      email="${email}"
+      enabled="${enabled}"
+      full-name="${full-name}"
+      user-name="${user-name}"
+      superuser="${superuser}"
+   >
+      ${siloAccessGenerator}
+   </MultiTenantUserConfig>
+</MultiTenantUserCreateRequest>

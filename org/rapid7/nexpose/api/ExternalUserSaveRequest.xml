@@ -1,0 +1,16 @@
+<UserSaveRequest session-id="${session-id}" sync-id="${sync-id}">
+   <UserConfig
+      allGroups="${allGroups}" 
+      allSites="${allSites}"
+      authsrcid="${authSrcId}"
+      email="${email}"
+      enabled="${enabled}"
+      fullname="${fullname}"
+      id="${id}"
+      name="${name}"
+      role-name="${roleName}"
+   >
+      ${sitesGenerator}
+      ${groupsGenerator}
+   </UserConfig>
+</UserSaveRequest>

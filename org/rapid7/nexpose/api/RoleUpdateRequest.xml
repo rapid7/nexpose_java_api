@@ -1,0 +1,38 @@
+<RoleUpdateRequest session-id="${session-id}" sync-id="${sync-id}">
+   <Role name="${roleName}" full-name="${roleFullName}" enabled="${roleEnabled}" id="${roleID}" scope="${scope}">
+   <Description>${roleDescription}</Description>
+      <GlobalPrivileges>
+         <CreateReports enabled="${createReportEnabled}"/>
+         <ConfigureGlobalSettings enabled="${configureGlobalSettingsEnabled}"/>
+         <ManageSites enabled="${manageSitesEnabled}"/>
+         <ManageAssetGroups enabled="${manageAssetGroupsEnabled}"/>
+         <ManageScanTemplates enabled="${manageScanTemplatesEnabled}"/>
+         <ManageReportTemplates enabled="${manageReportTemplatesEnabled}"/>
+         <ManageScanEngines enabled="${manageScanEnginesEnabled}"/>
+         <SubmitVulnExceptions enabled="${submitVulnExceptionsEnabled}"/>
+         <ApproveVulnExceptions enabled="${approveVulnExceptionsEnabled}"/>
+         <DeleteVulnExceptions enabled="${deleteVulnExceptionsEnabled}"/>
+         <CreateTickets enabled="${createTicketEnabled}"/>
+         <CloseTickets enabled="${closeTicketEnabled}"/>
+         <TicketAssignee enabled="${ticketAssigneeEnabled}"/>
+         <AddUsersToSite enabled="${addUsersToSiteEnabled}"/>
+         <AddUsersToGroup enabled="${addUsersToGroupEnabled}"/>
+      </GlobalPrivileges>   
+      <SitePrivileges>
+         <ViewAssetData enabled="${viewAssetDataEnabled}"/>
+         <ConfigureSiteSettings enabled="${configureSiteSettingsEnabled}"/>
+         <ConfigureTargets enabled="${configureTargetsEnabled}"/>
+         <ConfigureEngines enabled="${configureEnginesEnabled}"/>
+         <ConfigureScanTemplates enabled="${configureScanTemplatesEnabled}"/>
+         <ConfigureAlerts enabled="${configureAlertsEnabled}"/>
+         <ConfigureCredentials enabled="${configureCredentialsEnabled}"/>
+         <ConfigureScheduleScans enabled="${configureScheduleScansEnabled}"/>
+         <ManualScans enabled="${manualScansEnabled}"/>
+         <PurgeData enabled="${purgeDataEnabled}"/>
+      </SitePrivileges>
+      <AssetGroupPrivileges>
+         <ViewAssetData enabled="${viewGroupAssetDataEnabled}"/>
+         <ConfigureAssets enabled="${configureAssetsEnabled}"/>
+      </AssetGroupPrivileges>
+   </Role>
+</RoleUpdateRequest>

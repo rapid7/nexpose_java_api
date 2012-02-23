@@ -1,0 +1,14 @@
+<SiloUpdateRequest session-id="${session-id}" sync-id="${sync-id}">
+    <SiloConfig 
+      max-assets="${maxAssets}"
+      max-users="${maxUsers}"
+      description="${description}"
+      name="${name}"
+      id="${id}"
+      silo-profile-id="${silo-profile-id}"
+      
+      >
+      ${merchantGenerator}
+      ${organizationGenerator}
+     </SiloConfig>
+</SiloUpdateRequest>

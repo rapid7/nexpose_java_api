@@ -1,0 +1,5 @@
+<TicketDeleteRequest 
+   session-id="${session-id}"
+   sync-id="${sync-id}">
+   ${ticketsGenerator}
+</TicketDeleteRequest>  

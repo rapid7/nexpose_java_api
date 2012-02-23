@@ -1,0 +1,1 @@
+<LogoutRequest session-id="${session-id}" sync-id="${sync-id}"/>

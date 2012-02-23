@@ -1,0 +1,1 @@
+<LoginRequest user-id="${username}" password="${password}" sync-id="${sync-id}"/>

@@ -1,0 +1,3 @@
+<RoleDetailsRequest session-id="${session-id}" sync-id="${sync-id}">
+   ${rolesGenerator}
+</RoleDetailsRequest>  

@@ -1,0 +1,15 @@
+<SiloProfileCreateRequest session-id="${session-id}" sync-id="${sync-id}">
+   <SiloProfileConfig
+       all-global-report-templates="${hasGlobalReportTemplates}"
+       all-global-engines="${hasGlobalEngines}"
+       all-global-scan-templates="${hasGlobalScanTemplates}"
+       all-licensed-modules="${hasLicensedModules}"
+       description="${description}"
+       id="${id}"
+       name="${name}">
+       ${globalReportTemplate}
+       ${globalScanEngine}
+       ${globalScanTemplate}
+       ${licensedModule}
+   </SiloProfileConfig>
+</SiloProfileCreateRequest>

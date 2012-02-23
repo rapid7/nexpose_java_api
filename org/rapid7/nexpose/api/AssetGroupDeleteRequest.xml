@@ -1,0 +1,1 @@
+<AssetGroupDeleteRequest session-id="${session-id}" sync-id="${sync-id}" group-id="${assetGroupId}"/>

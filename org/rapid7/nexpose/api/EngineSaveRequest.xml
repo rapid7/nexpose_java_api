@@ -1,0 +1,13 @@
+<EngineSaveRequest 
+   session-id="${session-id}"
+   sync-id="${sync-id}">
+   <EngineConfig
+      id="${engineConfigId}"
+      name="${engineConfigName}"
+      address="${engineConfigAddress}"
+      port="${engineConfigPort}"
+      priority="${engineConfigPriority}"
+      scope="${engineConfigScope}">
+      ${sitesGenerator}
+   </EngineConfig>
+</EngineSaveRequest>

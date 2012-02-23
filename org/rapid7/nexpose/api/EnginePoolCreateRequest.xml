@@ -1,0 +1,5 @@
+<EnginePoolCreateRequest session-id="${session-id}" sync-id="${sync-id}">
+   <EnginePool name="${enginePoolName}" scope="${enginePoolScope}">
+      ${enginesGenerator}
+   </EnginePool>
+</EnginePoolCreateRequest>
