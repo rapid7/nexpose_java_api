@@ -1,5 +1,5 @@
 # Nexpose JAVA API
-_**This tool is made available to aid users in developing software that used the Nexpose API.**_
+_**This tool is made available to aid users in developing software that uses the Nexpose API.**_
 
 ## Recommendations
 - You must install the [JAVA SDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk-7u3-download-1501626.html) to use this tool
@@ -32,7 +32,16 @@ session.login(null);
 
 ```java
 ...   
-see org/rapid7/nexpose/api/APISession.java for a list of supported API operations.   
+// see org/rapid7/nexpose/api/APISession.java for a list of supported API operations.   
+// Example: The following will print out all the asset groups and their associated risk
+List<AssetGroupSummary> assetGroups = (List<AssetGroupSummary>)session.listAssetGroups(session.getSessionID(), null);
+for (AssetGroupSummary assetGroup : assetGroups)
+{
+   System.out.println("************************************");
+   System.out.println("Name: " + assetGroup.getName());
+   System.out.println("Risk: " + assetGroup.getRiskScore());
+   System.out.println("************************************");
+}
 ...
 ```
    
