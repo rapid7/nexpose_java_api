@@ -1,18 +1,16 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
- *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
- *    * Redistributions of source code must retain the above copyright
- *      notice, this list of conditions and the following disclaimer.
- *    * Redistributions in binary form must reproduce the above copyright
- *      notice, this list of conditions and the following disclaimer in the
- *      documentation and/or other materials provided with the distribution.
- *    * Neither the name of the <organization> nor the
- *      names of its contributors may be used to endorse or promote products
- *      derived from this software without specific prior written permission.
- *
+ * * Redistributions of source code must retain the above copyright
+ * notice, this list of conditions and the following disclaimer.
+ * * Redistributions in binary form must reproduce the above copyright
+ * notice, this list of conditions and the following disclaimer in the
+ * documentation and/or other materials provided with the distribution.
+ * * Neither the name of the <organization> nor the
+ * names of its contributors may be used to endorse or promote products
+ * derived from this software without specific prior written permission.
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -26,12 +24,15 @@
  */
 package org.rapid7.nexpose.api;
 
+import org.rapid7.nexpose.api.APISession.APISupportedVersion;
+import org.rapid7.nexpose.api.generators.IContentGenerator;
+import org.rapid7.nexpose.api.generators.StringContentGenerator;
+import org.rapid7.nexpose.utils.StringUtils;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
-import org.rapid7.nexpose.api.APISession.APISupportedVersion;
 
 /**
  * Simple base class for templating NeXpose API requests using an XML
@@ -133,7 +134,7 @@ public class TemplateAPIRequest implements APIRequest, Cloneable
     */
    public String toXML()
    {
-      m_requestXML = StringUtils.expandVariables(m_template, m_params); 
+      m_requestXML = StringUtils.expandVariables(m_template, m_params);
       return m_requestXML;
    }
 
@@ -156,6 +157,7 @@ public class TemplateAPIRequest implements APIRequest, Cloneable
     * @see java.lang.Object#clone()
     * @throws CloneNotSupportedException when the object cannot be cloned
     */
+   @Override
    @SuppressWarnings("unchecked")
    public Object clone() throws CloneNotSupportedException
    {
@@ -189,7 +191,7 @@ public class TemplateAPIRequest implements APIRequest, Cloneable
       InputStream in = c.getResourceAsStream(filename);
       if (in == null)
       {
-         throw new RuntimeException("Resource file " 
+         throw new RuntimeException("Resource file "
             + filename
             + " does not exist");
       }

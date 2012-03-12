@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,19 +26,18 @@
  */
 package org.rapid7.nexpose.api.generators;
 
+import org.rapid7.nexpose.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import org.rapid7.nexpose.api.IContentGenerator;
-import org.rapid7.nexpose.api.StringUtils;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 /**
  * Global scan engine generator.
- * 
+ *
  * @author Christopher Lee.
  */
 public class GlobalScanEngineGenerator implements IContentGenerator
@@ -74,7 +73,7 @@ public class GlobalScanEngineGenerator implements IContentGenerator
    {
       try
       {
-         final NodeList engines = 
+         final NodeList engines =
             (NodeList) XPathFactory.newInstance().newXPath().evaluate("GlobalScanEngine", contents, XPathConstants.NODESET);
          final int count = engines.getLength();
          for (int i = 0; i < count; i++)

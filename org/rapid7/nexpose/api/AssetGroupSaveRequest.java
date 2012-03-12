@@ -27,6 +27,7 @@
 package org.rapid7.nexpose.api;
 
 import org.rapid7.nexpose.api.APISession.APISupportedVersion;
+import org.rapid7.nexpose.api.generators.IContentGenerator;
 
 /**
  * Represents the AssetGroupSaveRequest NeXpose API request.
@@ -42,7 +43,7 @@ public class AssetGroupSaveRequest extends TemplateAPIRequest
    /**
     * Creates a new AssetGroupSaveRequest NeXpose API request.
     *
-    * @param sessionId the session to be used if different from the one on the 
+    * @param sessionId the session to be used if different from the one on the
     *        current APISession. useful when testing edge cases and testing in
     *        general.
     * @param syncId the syncId to identify the request/response pair.
@@ -51,13 +52,13 @@ public class AssetGroupSaveRequest extends TemplateAPIRequest
     * @param groupName the name of the group to save.
     * @param groupDescription the description of the group to save.
     * @param groupRiskScore the risk score associated with the group to save.
-    * @param devicesGenerator the {@link IContentGenerator} that knows how to 
+    * @param devicesGenerator the {@link IContentGenerator} that knows how to
     *        include devices inside of the AssetGroupSaveRequest.
     */
    public AssetGroupSaveRequest(
       String sessionId,
       String syncId,
-      String groupId, 
+      String groupId,
       String groupName,
       String groupDescription,
       String groupRiskScore,

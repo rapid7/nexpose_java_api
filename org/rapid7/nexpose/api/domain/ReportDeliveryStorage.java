@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without

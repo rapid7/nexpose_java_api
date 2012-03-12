@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,12 @@
  */
 package org.rapid7.nexpose.api.generators;
 
+import org.rapid7.nexpose.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import org.rapid7.nexpose.api.IContentGenerator;
-import org.rapid7.nexpose.api.StringUtils;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
@@ -46,15 +45,16 @@ public class TicketRequestTicketIDContentGenerator implements IContentGenerator
    /////////////////////////////////////////////////////////////////////////
    // Public methods
    /////////////////////////////////////////////////////////////////////////
-   
+
    /**
     * Constructs a new TicketRequestTicketIDContentGenerator object.
-    */   
+    */
    public TicketRequestTicketIDContentGenerator()
    {
       m_tickets = new ArrayList<String>();
    }
-   
+
+   @Override
    public String toString()
    {
       StringBuilder sb = new StringBuilder();
@@ -66,18 +66,18 @@ public class TicketRequestTicketIDContentGenerator implements IContentGenerator
       }
       return sb.toString();
    }
-   
+
    /**
     * Sets the contents of the generator that come as a parameter.
-    *  
+    *
     * @param contents Elements of the xml request.
-    */   
+    */
    @Override
    public void setContents(Element contents)
    {
       try
       {
-         final NodeList tickets = 
+         final NodeList tickets =
             (NodeList) XPathFactory.newInstance().newXPath().evaluate("Ticket", contents, XPathConstants.NODESET);
          for (int i = 0; i < tickets.getLength(); i++)
          {
@@ -94,10 +94,10 @@ public class TicketRequestTicketIDContentGenerator implements IContentGenerator
          throw new RuntimeException("The tickets could not be generated: " + e.toString());
       }
    }
-   
+
    /**
     * Returns the list of ticket ids which were sent with the Ticket Detail/Ticket Delete request.
-    * 
+    *
     * @return The list of TicketIDs.
     */
    public List<String> getTickets()
@@ -107,19 +107,19 @@ public class TicketRequestTicketIDContentGenerator implements IContentGenerator
 
    /**
     * Sets the list of Ticket IDs.
-    * 
+    *
     * @param tickets The list of TicketIDs.
-    */   
+    */
    public void setTickets(List<String> tickets)
    {
       m_tickets = tickets;
    }
-   
+
    /////////////////////////////////////////////////////////////////////////
    // Non-public fields
    /////////////////////////////////////////////////////////////////////////
-   
-   /** List of TicketIDs to be saved */   
+
+   /** List of TicketIDs to be saved */
    private List<String> m_tickets;
-   
+
 }

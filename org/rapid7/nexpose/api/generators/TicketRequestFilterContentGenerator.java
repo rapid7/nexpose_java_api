@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,12 @@
  */
 package org.rapid7.nexpose.api.generators;
 
+import org.rapid7.nexpose.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import org.rapid7.nexpose.api.IContentGenerator;
-import org.rapid7.nexpose.api.StringUtils;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
@@ -45,82 +44,82 @@ public class TicketRequestFilterContentGenerator implements IContentGenerator
 {
    /**
     * Represents a filter contained in an Ticket Listing Request.
-    *  
+    *
     * @author Murali Rongali
     */
    public static class TicketListingRequestFilter
    {
-   
+
       /////////////////////////////////////////////////////////////////////////
       // Public methods
       /////////////////////////////////////////////////////////////////////////
-	  
+
       /**
        * Constructs a new TicketListingRequestFilter object.
        *
        * @param type The filter type.
        * @param value The value of the filter.
-       */  
+       */
       public TicketListingRequestFilter(String type, String value)
       {
          m_type = type;
          m_value = value;
       }
-      
+
       /**
        * Returns the type of the filter.
-       * 
+       *
        * @return the filter's type.
        */
       public String getType()
       {
          return m_type;
       }
-      
+
       /**
        * Sets the type of the filter.
-       * 
+       *
        * @param type the filter type to set.
        */
       public void setType(String type)
       {
          m_type = type;
       }
-      
+
       /**
        * Returns the value of the filter.
-       * 
+       *
        * @return the filter value.
        */
       public String getValue()
       {
          return m_value;
       }
-      
+
       /**
        * Sets the value of the filter.
-       * 
+       *
        * @param value the filter value to set.
        */
       public void setValue(String value)
       {
          m_value = value;
       }
-      
+
       /////////////////////////////////////////////////////////////////////////
       // Non-public fields
       /////////////////////////////////////////////////////////////////////////
-   
+
       /**The type of the Filter*/
       private String m_type;
-      
+
       /**The value of the filter*/
       private String m_value;
    }
-   
+
    /**
     * Constructs a new TicketRequestFilterContentGenerator object.
-    */  
+    */
    public TicketRequestFilterContentGenerator()
    {
       m_filters = new ArrayList<TicketListingRequestFilter>();
@@ -140,23 +139,23 @@ public class TicketRequestFilterContentGenerator implements IContentGenerator
       }
       return sb.toString();
    }
-   
+
    /**
     * Sets the contents of the generator that come as a parameter.
-    *  
+    *
     * @param contents Elements of the xml request.
-    */   
+    */
    @Override
    public void setContents(Element contents)
    {
       try
       {
-         final NodeList filters = 
+         final NodeList filters =
             (NodeList) XPathFactory.newInstance().newXPath().evaluate("Filter", contents, XPathConstants.NODESET);
          for (int i = 0; i < filters.getLength(); i++)
          {
             Element elementFilter = (Element) filters.item(i);
-            TicketListingRequestFilter filter = 
+            TicketListingRequestFilter filter =
                new TicketListingRequestFilter(elementFilter.getAttribute("type"),elementFilter.getAttribute("value"));
             m_filters.add(filter);
          }
@@ -168,32 +167,32 @@ public class TicketRequestFilterContentGenerator implements IContentGenerator
          throw new RuntimeException("The filters could not be generated: " + e.toString());
       }
    }
-   
+
    /**
     * Returns the list of filters which were sent with the Ticket Listing request.
-    * 
+    *
     * @return The list of filters.
     */
    public List<TicketListingRequestFilter> getFilters()
    {
       return m_filters;
    }
-   
+
    /**
     * Sets the list of filters.
-    * 
+    *
     * @param filters The list of filters.
     */
    public void setFilters(List<TicketListingRequestFilter> filters)
    {
       m_filters = filters;
    }
-   
+
    /////////////////////////////////////////////////////////////////////////
    // Non-public fields
    /////////////////////////////////////////////////////////////////////////
-   
-   /** List of filters */  
+
+   /** List of filters */
    private List<TicketListingRequestFilter> m_filters;
-   
+
 }

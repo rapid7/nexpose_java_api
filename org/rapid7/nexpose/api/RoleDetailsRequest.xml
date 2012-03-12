@@ -1,3 +1,8 @@
+<!--==========================================================================
+  COPYRIGHT (C) 2010, Rapid7 LLC, Boston, MA, USA. 
+  All rights reserved. This material contains unpublished, copyrighted 
+  work including confidential and proprietary information of Rapid7. 
+ ==========================================================================-->
 <RoleDetailsRequest session-id="${session-id}" sync-id="${sync-id}">
    ${rolesGenerator}
 </RoleDetailsRequest>  

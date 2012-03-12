@@ -25,13 +25,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package org.rapid7.nexpose.api.examples;
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
 import org.rapid7.nexpose.api.APIException;
 import org.rapid7.nexpose.api.APISession;
 import org.rapid7.nexpose.api.APISession.APISupportedVersion;
-import org.rapid7.nexpose.api.UserSummary;
+import org.rapid7.nexpose.api.domain.UserSummary;
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
 
 /**
  * Prints out all the user accounts that are disabled.
@@ -41,42 +41,42 @@ import org.rapid7.nexpose.api.UserSummary;
 public class DisabledUsers
 {
    APISession session = null;
-   
+
    /**
     * Body of the API call.
     */
    public void printDisabledUsers(String[] args) throws IOException, APIException
-   {      
+   {
       // ALWAYS LOGIN BEFORE OPERATIONS.
       APISession session = getSession(args);
       String sessionID = session.getSessionID();
-      
+
       List<UserSummary> userSummaries = (List<UserSummary>)session.listUsers(sessionID, null);
       boolean disabledUsers = false;
-      
+
       for (UserSummary userSummary: userSummaries)
       {
          if (userSummary.isDisabled())
          {
             if (!disabledUsers)
                disabledUsers = true;
-               
+
             System.out.println(userSummary.getUsername());
          }
       }
-      
+
       if (!disabledUsers)
       {
          System.out.println("*** No users are disabled. ***");
       }
-      
+
       // ALWAYS LOGOUT WHEN FINISHED.
       session.logout(sessionID, null);
    }
-   
+
    /*
     * Gets authenticated session object
-    * 
+    *
     */
    private APISession getSession(String[] args) throws IOException, APIException
    {
@@ -96,7 +96,7 @@ public class DisabledUsers
       }
       return session;
    }
-   
+
    public static void main(String[] args) throws IOException, APIException
    {
       if (args.length < 4)
@@ -105,7 +105,7 @@ public class DisabledUsers
          System.out.println("USAGE: java DisabledUsers nexpose_netaddress, port, username, password");
          return;
       }
-      
+
       new DisabledUsers().printDisabledUsers(args);
    }
 }

@@ -25,13 +25,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package org.rapid7.nexpose.api.examples;
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
 import org.rapid7.nexpose.api.APIException;
 import org.rapid7.nexpose.api.APISession;
 import org.rapid7.nexpose.api.APISession.APISupportedVersion;
-import org.rapid7.nexpose.api.EngineSummary;
+import org.rapid7.nexpose.api.domain.EngineSummary;
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
 
 /**
  * Prints out engine status.
@@ -41,34 +41,34 @@ import org.rapid7.nexpose.api.EngineSummary;
 public class ScanEnginesAndStatus
 {
    APISession session = null;
-   
+
    /**
     * Body of the API call.
     */
    public void scanEnginesAndStatus(String[] args) throws IOException, APIException
-   {      
+   {
       // ALWAYS LOGIN BEFORE OPERATIONS.
       APISession session = getSession(args);
       String sessionID = session.getSessionID();
-      
+
       List<EngineSummary> engineSummaries = (List<EngineSummary>)session.listEngines(sessionID, null);
-       
+
       System.out.println("\n*** NAME, ADDRESS, STATUS ***");
       for (EngineSummary engineSummary : engineSummaries)
       {
          System.out.print(engineSummary.getName());
          System.out.print(", " + engineSummary.getAddress());
          System.out.print(", " + engineSummary.getStatus());
-         System.out.print("\n");         
+         System.out.print("\n");
       }
-      
+
       // ALWAYS LOGOUT WHEN FINISHED.
       session.logout(sessionID, null);
    }
-   
+
    /*
     * Gets authenticated session object
-    * 
+    *
     */
    private APISession getSession(String[] args) throws IOException, APIException
    {
@@ -88,7 +88,7 @@ public class ScanEnginesAndStatus
       }
       return session;
    }
-   
+
    public static void main(String[] args) throws IOException, APIException
    {
       if (args.length < 4)
@@ -97,7 +97,7 @@ public class ScanEnginesAndStatus
          System.out.println("USAGE: java ScanEnginesAndStatus nexpose_netaddress, port, username, password");
          return;
       }
-      
+
       new ScanEnginesAndStatus().scanEnginesAndStatus(args);
    }
 }

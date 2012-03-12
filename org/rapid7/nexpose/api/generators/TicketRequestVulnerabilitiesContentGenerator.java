@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,12 @@
  */
 package org.rapid7.nexpose.api.generators;
 
+import org.rapid7.nexpose.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import org.rapid7.nexpose.api.IContentGenerator;
-import org.rapid7.nexpose.api.StringUtils;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
@@ -45,8 +44,8 @@ public class TicketRequestVulnerabilitiesContentGenerator implements IContentGen
 {
    /////////////////////////////////////////////////////////////////////////
    // Public methods
-   /////////////////////////////////////////////////////////////////////////   
-   
+   /////////////////////////////////////////////////////////////////////////
+
    /**
     * Constructs a new SaveTicketRequestVulnerabilitiesContentGenerator object.
     */
@@ -54,7 +53,7 @@ public class TicketRequestVulnerabilitiesContentGenerator implements IContentGen
    {
       m_vulnerabilities = new ArrayList<String>();
    }
-   
+
    @Override
    public String toString()
    {
@@ -69,10 +68,10 @@ public class TicketRequestVulnerabilitiesContentGenerator implements IContentGen
       sb.append("</Vulnerabilities>");
       return sb.toString();
    }
-   
+
    /**
-    * Sets the contents of the generator that come as a parameter. 
-    *  
+    * Sets the contents of the generator that come as a parameter.
+    *
     * @param contents Elements of the xml request.
     */
    @Override
@@ -80,7 +79,7 @@ public class TicketRequestVulnerabilitiesContentGenerator implements IContentGen
    {
       try
       {
-         final NodeList vulnerabilities = 
+         final NodeList vulnerabilities =
             (NodeList) XPathFactory.newInstance().newXPath().evaluate("Vulnerability", contents, XPathConstants.NODESET);
          for (int i = 0; i < vulnerabilities.getLength(); i++)
          {
@@ -96,32 +95,32 @@ public class TicketRequestVulnerabilitiesContentGenerator implements IContentGen
          throw new RuntimeException("The sites could not be generated: " + e.toString());
       }
    }
-   
+
    /**
     * Returns the list of vulnerabilities which were sent with the Create Ticket request.
-    * 
+    *
     * @return The list of vulnerabilities.
     */
    public List<String> getVulnerabilities()
    {
       return m_vulnerabilities;
    }
-   
+
    /**
     * Sets the list of vulnerabilities.
-    * 
+    *
     * @param vulnerabilities The list of vulnerabilities.
     */
    public void setVulnerabilities(List<String> vulnerabilities)
    {
       m_vulnerabilities = vulnerabilities;
    }
-   
+
    /////////////////////////////////////////////////////////////////////////
    // Non-public fields
    /////////////////////////////////////////////////////////////////////////
 
    /** List of vulnerabilities to be saved */
    private List<String> m_vulnerabilities;
-   
+
 }

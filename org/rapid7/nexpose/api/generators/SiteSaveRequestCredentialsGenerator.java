@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,14 +26,13 @@
  */
 package org.rapid7.nexpose.api.generators;
 
+import org.rapid7.nexpose.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import org.rapid7.nexpose.api.IContentGenerator;
-import org.rapid7.nexpose.api.StringUtils;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
@@ -92,7 +91,7 @@ public class SiteSaveRequestCredentialsGenerator implements IContentGenerator
        */
       public void setService(String service)
       {
-         this.m_service = service;
+         m_service = service;
       }
 
       /**
@@ -112,7 +111,7 @@ public class SiteSaveRequestCredentialsGenerator implements IContentGenerator
        */
       public void setHost(String host)
       {
-         this.m_host = host;
+         m_host = host;
       }
 
       /**
@@ -132,7 +131,7 @@ public class SiteSaveRequestCredentialsGenerator implements IContentGenerator
        */
       public void setPort(String port)
       {
-         this.m_port = port;
+         m_port = port;
       }
 
       /**
@@ -152,7 +151,7 @@ public class SiteSaveRequestCredentialsGenerator implements IContentGenerator
        */
       public void setRealm(String realm)
       {
-         this.m_realm = realm;
+         m_realm = realm;
       }
 
       /**
@@ -192,13 +191,13 @@ public class SiteSaveRequestCredentialsGenerator implements IContentGenerator
        */
       public void setPassword(String password)
       {
-         this.m_password = password;
+         m_password = password;
       }
 
       /////////////////////////////////////////////////////////////////////////
       // non-Public fields
       /////////////////////////////////////////////////////////////////////////
-   
+
       /**The service used for the credentials to work*/
       private String m_service;
       /**The host to apply the credentials against*/
@@ -229,6 +228,7 @@ public class SiteSaveRequestCredentialsGenerator implements IContentGenerator
     *
     * @see java.lang.Object#toString()
     */
+   @Override
    public String toString()
    {
       StringBuilder sb = new StringBuilder();
@@ -265,7 +265,7 @@ public class SiteSaveRequestCredentialsGenerator implements IContentGenerator
          for (int i = 0; i < ranges.getLength(); i++)
          {
             Element elementCredential = (Element) ranges.item(i);
-            SiteSaveRequestCredential credential = 
+            SiteSaveRequestCredential credential =
                new SiteSaveRequestCredential(
                   elementCredential.getAttribute("service"),
                   elementCredential.getAttribute("host"),
@@ -303,7 +303,7 @@ public class SiteSaveRequestCredentialsGenerator implements IContentGenerator
     */
    public void setCredentials(List<SiteSaveRequestCredential> credentials)
    {
-      this.m_credentials = credentials;
+      m_credentials = credentials;
    }
    /////////////////////////////////////////////////////////////////////////
    // non-Public fields

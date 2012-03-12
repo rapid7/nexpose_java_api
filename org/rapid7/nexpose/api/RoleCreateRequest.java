@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,7 +42,7 @@ public class RoleCreateRequest extends TemplateAPIRequest
    /**
     * Constructs a role create request with its associated API version
     * information.
-    * 
+    *
     * @param sessionId The session to submit the request with. May not be {@code null} nor empty and must
     * be a 40 character hex {@link String}.
     * @param syncId The sync id to identify the response. May be {@code null}.
@@ -51,7 +51,7 @@ public class RoleCreateRequest extends TemplateAPIRequest
     * @param roleEnabled  The flag which indicates if the role is enabled. May not be {@code null} nor empty.
     * @param createReportEnabled The flag which indicates if the createreport privilege is enabled. May not be {@code null} nor empty.
     * @param viewAssetDataEnabled The flag which indicates if the viewassetsata privilege is enabled. May not be {@code null} nor empty.
-    * @param configureSiteSettingsEnabled The flag which indicates if the configuresitesettings privilege is enabled. May not be {@code null} nor empty. 
+    * @param configureSiteSettingsEnabled The flag which indicates if the configuresitesettings privilege is enabled. May not be {@code null} nor empty.
     * @param configureTargetsEnabled The flag which indicates if the configuretargets privilege is enabled. May not be {@code null} nor empty.
     * @param configureEnginesEnabled The flag which indicates if the configureengines privilege is enabled. May not be {@code null} nor empty.
     * @param configureScanTemplatesEnabled The flag which indicates if the configurescantemplates privilege is enabled. May not be {@code null} nor empty.
@@ -66,14 +66,14 @@ public class RoleCreateRequest extends TemplateAPIRequest
    public RoleCreateRequest(String sessionId, String syncId, String roleName, String roleFullName, String roleDescription,
 	  String roleEnabled, String scope, String createReportEnabled, String configureGlobalSettingsEnabled, String manageSitesEnabled,String manageAssetGroupsEnabled,String manageScanTemplatesEnabled,String manageReportTemplatesEnabled,String manageScanEnginesEnabled,String submitVulnExceptionsEnabled,String approveVulnExceptionsEnabled,String deleteVulnExceptionsEnabled,String addUsersToSiteEnabled, String addUsersToGroupEnabled, String createTicketEnabled, String closeTicketEnabled, String ticketAssigneeEnabled, String viewAssetDataEnabled,
 	  String configureSiteSettingsEnabled, String  configureTargetsEnabled,String configureEnginesEnabled, String configureScanTemplatesEnabled,
-	  String configureAlertsEnabled, String configureScheduleScansEnabled, String configureCredentialsEnabled, 
+	  String configureAlertsEnabled, String configureScheduleScansEnabled, String configureCredentialsEnabled,
 	  String manualScansEnabled, String purgeDataEnabled, String viewGroupAssetDataEnabled,
 	  String configureAssetsEnabled)
    {
       super(sessionId, syncId);
       set("roleName", roleName);
       set("roleFullName", roleFullName);
-      set("roleEnabled", roleEnabled);  
+      set("roleEnabled", roleEnabled);
       if ( scope == null)
     	  scope="silo";
       set("scope", scope);
@@ -93,8 +93,6 @@ public class RoleCreateRequest extends TemplateAPIRequest
       set("createTicketEnabled", createTicketEnabled);
       set("closeTicketEnabled", closeTicketEnabled);
       set("ticketAssigneeEnabled", ticketAssigneeEnabled);
-      
-      
       set("viewAssetDataEnabled", viewAssetDataEnabled);
       set("configureSiteSettingsEnabled", configureSiteSettingsEnabled);
       set("configureTargetsEnabled", configureTargetsEnabled);

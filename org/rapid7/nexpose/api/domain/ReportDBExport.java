@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,8 @@
  */
 package org.rapid7.nexpose.api.domain;
 
-import org.rapid7.nexpose.api.*;
-import org.rapid7.nexpose.api.generators.*;
+import org.rapid7.nexpose.api.generators.IContentGenerator;
+import org.rapid7.nexpose.api.generators.ReportDBExportParamsGenerator;
 
 public class ReportDBExport
 {
@@ -46,7 +46,7 @@ public class ReportDBExport
 
   public void setType(String type)
   {
-    this.m_type = type;
+    m_type = type;
   }
 
   public String getUserID()
@@ -56,7 +56,7 @@ public class ReportDBExport
 
   public void setUserID(String userid)
   {
-    this.m_userid = userid;
+    m_userid = userid;
   }
 
   public String getPassword()
@@ -66,7 +66,7 @@ public class ReportDBExport
 
   public void setPassword(String password)
   {
-    this.m_password = password;
+    m_password = password;
   }
 
   public String getRealm()
@@ -76,7 +76,7 @@ public class ReportDBExport
 
   public void setRealm(String realm)
   {
-    this.m_realm = realm;
+    m_realm = realm;
   }
 
   public IContentGenerator getParamGenerator()
@@ -86,7 +86,7 @@ public class ReportDBExport
 
   public void setParamGenerator(IContentGenerator paramGenerator)
   {
-    this.m_paramGenerator = paramGenerator;
+    m_paramGenerator = paramGenerator;
   }
 
   private String m_type = null;

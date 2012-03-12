@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,7 @@
 package org.rapid7.nexpose.api;
 
 import org.rapid7.nexpose.api.APISession.APISupportedVersion;
+import org.rapid7.nexpose.api.generators.IContentGenerator;
 
 /**
  * Represents the EngineSaveRequest NeXpose API request.
@@ -38,7 +39,7 @@ public class EngineSaveRequest extends TemplateAPIRequest
    /**
     * Creates a new EngineSaveRequest NeXpose API request.
     *
-    * @param sessionId the session to be used if different from the one on the 
+    * @param sessionId the session to be used if different from the one on the
     *        current APISession. useful when testing edge cases and testing in
     *        general.
     * @param syncId the syncId to identify the request/response pair.
@@ -47,19 +48,17 @@ public class EngineSaveRequest extends TemplateAPIRequest
     * @param engineConfigAddress the address of the engine configuration
     * @param engineConfigPort the port of the engine configuration.
     * @param engineConfigPriority the priority of the engine configuration
-    * @param engineConfigScope The scope of the scan engine (either silo or global)
     * @param sitesGenerator the {@link IContentGenerator} of the sites within
     *        the engine save request.
     */
    public EngineSaveRequest(
       String sessionId,
-      String syncId, 
+      String syncId,
       String engineConfigId,
       String engineConfigName,
       String engineConfigAddress,
       String engineConfigPort,
-      String engineConfigPriority, 
-      String engineConfigScope,
+      String engineConfigPriority,
       IContentGenerator sitesGenerator)
    {
       super(sessionId, syncId);
@@ -68,7 +67,6 @@ public class EngineSaveRequest extends TemplateAPIRequest
       set("engineConfigAddress", engineConfigAddress);
       set("engineConfigPort", engineConfigPort);
       set("engineConfigPriority", engineConfigPriority);
-      set("engineConfigScope", engineConfigScope);
       set("sitesGenerator", sitesGenerator);
       m_firstSupportedVersion = APISupportedVersion.V1_2;
       m_lastSupportedVersion = APISupportedVersion.V1_2;

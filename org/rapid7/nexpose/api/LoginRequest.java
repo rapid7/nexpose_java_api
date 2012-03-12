@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,7 +31,6 @@ import org.rapid7.nexpose.api.APISession.APISupportedVersion;
 /**
  * Represents the LoginRequest NeXpose API request.
  *
- * @author Chad Loder
  * @author Leonardo Varela
  */
 public class LoginRequest extends TemplateAPIRequest

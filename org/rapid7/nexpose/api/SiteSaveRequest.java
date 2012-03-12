@@ -1,18 +1,16 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
- *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
- *    * Redistributions of source code must retain the above copyright
- *      notice, this list of conditions and the following disclaimer.
- *    * Redistributions in binary form must reproduce the above copyright
- *      notice, this list of conditions and the following disclaimer in the
- *      documentation and/or other materials provided with the distribution.
- *    * Neither the name of the <organization> nor the
- *      names of its contributors may be used to endorse or promote products
- *      derived from this software without specific prior written permission.
- *
+ * * Redistributions of source code must retain the above copyright
+ * notice, this list of conditions and the following disclaimer.
+ * * Redistributions in binary form must reproduce the above copyright
+ * notice, this list of conditions and the following disclaimer in the
+ * documentation and/or other materials provided with the distribution.
+ * * Neither the name of the <organization> nor the
+ * names of its contributors may be used to endorse or promote products
+ * derived from this software without specific prior written permission.
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -27,10 +25,7 @@
 package org.rapid7.nexpose.api;
 
 import org.rapid7.nexpose.api.APISession.APISupportedVersion;
-import org.rapid7.nexpose.api.generators.SiteSaveRequestAlertsGenerator;
-import org.rapid7.nexpose.api.generators.SiteSaveRequestCredentialsGenerator;
-import org.rapid7.nexpose.api.generators.SiteSaveRequestHostsGenerator;
-import org.rapid7.nexpose.api.generators.SiteSaveRequestRangesGenerator;
+import org.rapid7.nexpose.api.generators.IContentGenerator;
 
 /**
  * Represents the SiteSaveRequest NeXpose API request.
@@ -54,8 +49,8 @@ public class SiteSaveRequest extends TemplateAPIRequest
     *        acquired one (You acquire one when you authenticate correctly with
     *        the login method in the {@link APISession} class). This is a
     *        String of 40 characters.
-    * @param syncId the synchronization id to identify the response associated 
-    *        with the response in asynchronous environments. It can be any 
+    * @param syncId the synchronization id to identify the response associated
+    *        with the response in asynchronous environments. It can be any
     *        string. This field is optional.
     * @param siteId an integer that represents the id of the site to save. Use
     *        -1 for to create a new site, NeXpose will assign an ID.
@@ -121,7 +116,7 @@ public class SiteSaveRequest extends TemplateAPIRequest
     *        and for a reference implementation. For QA testing you should
     *        construct your own {@link IContentGenerator} to generate all the
     *        edge test cases you can think of.
-    * @param configName a String that represents the name of the scan 
+    * @param configName a String that represents the name of the scan
     *        configuration for the site to be saved.
     * @param configVersion a positive integer that represents the scan
     *        configuration version of the site to be saved.
@@ -152,7 +147,7 @@ public class SiteSaveRequest extends TemplateAPIRequest
     * @param scheduleMaxDuration a String that represents the maximum duration
     *        allowed for the scan. This is optional and only present if the Scan
     *        Configuration of the site is to have a schedule associated with it.
-    * @param scheduleNotValidAfter a String that represents the expiration of 
+    * @param scheduleNotValidAfter a String that represents the expiration of
     *        the schedule. This is optional and only present if the Scan
     *        Configuration of the site is to have a schedule associated with it.
     */
@@ -167,9 +162,9 @@ public class SiteSaveRequest extends TemplateAPIRequest
       IContentGenerator rangesGenerator,
       IContentGenerator credentialsGenerator,
       IContentGenerator alertsGenerator,
-      String configName, 
-      String configVersion, 
-      String configId, 
+      String configName,
+      String configVersion,
+      String configId,
       String configTemplateId,
       String configEngineId,
       String scheduleEnabled,
@@ -182,7 +177,7 @@ public class SiteSaveRequest extends TemplateAPIRequest
       )
    {
       super(sessionId, syncId);
-            set("siteId", siteId);
+      set("siteId", siteId);
       set("siteName", siteName);
       set("siteDescription", siteDescription);
       set("siteRiskFactor", siteRiskFactor);

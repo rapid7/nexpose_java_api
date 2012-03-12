@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,14 +26,13 @@
  */
 package org.rapid7.nexpose.api.generators;
 
+import org.rapid7.nexpose.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import org.rapid7.nexpose.api.IContentGenerator;
-import org.rapid7.nexpose.api.StringUtils;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
@@ -69,13 +68,13 @@ public class SiloConfigStoragePropertiesGenerator implements IContentGenerator
        */
       public void setKey(String key)
       {
-         this.m_key = key;
+         m_key = key;
       }
 
       /**
        * Retrieves the value of the property
        *
-       * @return The value of the property. 
+       * @return The value of the property.
        */
       public String getValue()
       {
@@ -89,12 +88,12 @@ public class SiloConfigStoragePropertiesGenerator implements IContentGenerator
        */
       public void setValue(String value)
       {
-         this.m_value = value;
+         m_value = value;
       }
       /**
        * Creates a new Property.
        *
-       * @param key The key of the property 
+       * @param key The key of the property
        * @param value The value of the property.
        */
       public DBProperty(String key, String value)
@@ -125,6 +124,7 @@ public class SiloConfigStoragePropertiesGenerator implements IContentGenerator
     *
     * @see java.lang.Object#toString()
     */
+   @Override
    public String toString()
    {
       StringBuilder sb = new StringBuilder();
@@ -185,7 +185,7 @@ public class SiloConfigStoragePropertiesGenerator implements IContentGenerator
     */
    public void setPropertiess(List<DBProperty> properties)
    {
-      this.m_properties = properties;
+      m_properties = properties;
    }
 
    /////////////////////////////////////////////////////////////////////////

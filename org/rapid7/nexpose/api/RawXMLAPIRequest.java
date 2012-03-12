@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@ import org.rapid7.nexpose.api.APISession.APISupportedVersion;
 
 /**
  * Encapsulates any request that come in an String. This class is used for both:
- * extreme cases testing, and unimplemented(in the api-client library) 
+ * extreme cases testing, and unimplemented(in the api-client library)
  * API requests.
  *
  * @author Leonardo Varela

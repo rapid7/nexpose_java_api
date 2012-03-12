@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ public class RoleDeleteRequest extends TemplateAPIRequest
 
    /**
     * Constructs a role delete request with its associated API version information.
-    * 
+    *
     * @param sessionId The session to submit the request with. May not be {@code null} nor empty and must
     * be a 40 character hex {@link String}.
     * @param syncId the sync id to identify the response. May be {@code null}.
@@ -51,7 +51,7 @@ public class RoleDeleteRequest extends TemplateAPIRequest
    {
       super(sessionId, syncId);
       set("roleName", roleName);
-      
+
       if (scope == null)
     	  scope = "silo";
       set("scope", scope);

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,14 +26,13 @@
  */
 package org.rapid7.nexpose.api.generators;
 
+import org.rapid7.nexpose.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import org.rapid7.nexpose.api.IContentGenerator;
-import org.rapid7.nexpose.api.StringUtils;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
@@ -80,7 +79,7 @@ public class SiteSaveRequestRangesGenerator implements IContentGenerator
        */
       public void setToAddress(String toAddress)
       {
-         this.m_to = toAddress;
+         m_to = toAddress;
       }
 
       /**
@@ -96,12 +95,12 @@ public class SiteSaveRequestRangesGenerator implements IContentGenerator
        */
       public void setFromAddress(String fromAddress)
       {
-         this.m_from = fromAddress;
+         m_from = fromAddress;
       }
       /////////////////////////////////////////////////////////////////////////
       // non-Public fields
       /////////////////////////////////////////////////////////////////////////
-   
+
       /**The from address of the range*/
       private String m_from;
       /**The to address of the range*/
@@ -120,6 +119,7 @@ public class SiteSaveRequestRangesGenerator implements IContentGenerator
     *
     * @see java.lang.Object#toString()
     */
+   @Override
    public String toString()
    {
       StringBuilder sb = new StringBuilder();
@@ -175,7 +175,7 @@ public class SiteSaveRequestRangesGenerator implements IContentGenerator
     */
    public void setRanges(List<SiteSaveRequestRange> ranges)
    {
-      this.m_ranges = ranges;
+      m_ranges = ranges;
    }
    /////////////////////////////////////////////////////////////////////////
    // non-Public fields

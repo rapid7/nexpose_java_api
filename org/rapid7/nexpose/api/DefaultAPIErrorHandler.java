@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,10 +45,8 @@ public class DefaultAPIErrorHandler implements IAPIErrorHandler
     * @see org.rapid7.nexpose.api.IAPIErrorHandler#handleError(org.rapid7.nexpose.api.APIRequest, org.rapid7.nexpose.api.APIResponse, org.rapid7.nexpose.api.APISession, java.lang.String)
     */
    @Override
-   public void handleError(APIRequest request, APIResponse response, Session session, String message) throws APIException
+   public void handleError(APIRequest request, APIResponse response, APISession session, String message) throws APIException
    {
-      String responseStr = (response == null ? null : response.getResponse());
-      String requestStr = (response == null ? null : response.getFinalXML());
-      throw new APIException(message, requestStr, responseStr);
+      throw new APIException(message);
    }
 }

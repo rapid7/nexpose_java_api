@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,7 @@
 package org.rapid7.nexpose.api;
 
 import org.rapid7.nexpose.api.APISession.APISupportedVersion;
+import org.rapid7.nexpose.api.generators.IContentGenerator;
 
 /**
  * Encapsulates the EnginePoolCreateRequest NeXpose API request.
@@ -42,7 +43,7 @@ public class EnginePoolCreateRequest extends TemplateAPIRequest
    /**
     * Constructs a engine pool create request with its associated API version
     * information.
-    * 
+    *
     * @param sessionId The session to submit the request with. May not be {@code null} nor empty and must
     * be a 40 character hex {@link String}.
     * @param syncId The sync id to identify the response. May be {@code null}.
@@ -50,13 +51,13 @@ public class EnginePoolCreateRequest extends TemplateAPIRequest
     * @param enginePoolScope The scope of the engine pool. May not be {@code null} nor empty and must be less than 255 character.
     * @param enginesGenerator The content generator instance. May not be {@code null} nor empty.
     */
-   public EnginePoolCreateRequest(String sessionId, String syncId, String enginePoolName, String enginePoolScope, 
+   public EnginePoolCreateRequest(String sessionId, String syncId, String enginePoolName, String enginePoolScope,
       IContentGenerator enginesGenerator)
    {
       super(sessionId, syncId);
       set("enginePoolName", enginePoolName);
       set("enginePoolScope", enginePoolScope);
-      set("enginesGenerator", enginesGenerator);      
+      set("enginesGenerator", enginesGenerator);
       m_firstSupportedVersion = APISupportedVersion.V1_2;
       m_lastSupportedVersion = APISupportedVersion.V1_2;
    }

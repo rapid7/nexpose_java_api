@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,10 +26,8 @@
  */
 package org.rapid7.nexpose.api.generators;
 
-import javax.xml.xpath.*;
-
-import org.rapid7.nexpose.api.*;
-import org.w3c.dom.*;
+import org.rapid7.nexpose.utils.StringUtils;
+import org.w3c.dom.Element;
 
 public class ReportTemplateIDGenerator    implements IContentGenerator
 {
@@ -38,12 +36,12 @@ public class ReportTemplateIDGenerator    implements IContentGenerator
   // ///////////////////////////////////////////////////////////////////////
   public ReportTemplateIDGenerator(String templateID)
   {
-    this.m_templateID = templateID;
+    m_templateID = templateID;
   }
 
   public ReportTemplateIDGenerator()
   {
-    this.m_templateID = null;
+    m_templateID = null;
   }
 
   @Override
@@ -63,25 +61,9 @@ public class ReportTemplateIDGenerator    implements IContentGenerator
   @Override
   public void setContents(Element contents)
   {
-    try
-    {
-       final NodeList delivery =
-          (NodeList) XPathFactory.newInstance().newXPath().evaluate("Delivery", contents, XPathConstants.NODESET);
-       String location = null;
-       if(delivery.getLength() > 0)
-       {
-          Element elementLocation = (Element) delivery.item(0);
-
-          location = elementLocation.getTextContent();
-       }
-       m_templateID = null;
-    }
-    catch (XPathExpressionException e)
-    {
-       System.out.println("Could not parse the Contents Generator for " +
-          "ReportTemplateIDGenerator: " + e.toString());
-       throw new RuntimeException("The template-id could not be generated: " + e.toString());
-    }
+    System.out.println("No elements supported for Contents Generator for " +
+                       "ReportTemplateIDGenerator: " + contents.toString());
+    throw new RuntimeException("The template-id could not be generated: " + contents.toString());
 
   }
 
@@ -92,7 +74,7 @@ public class ReportTemplateIDGenerator    implements IContentGenerator
 
   public void setTemplateID(String templateID)
   {
-    this.m_templateID = templateID;
+    m_templateID = templateID;
   }
 
   private String m_templateID;

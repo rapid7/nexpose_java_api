@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,14 +26,13 @@
  */
 package org.rapid7.nexpose.api.generators;
 
+import org.rapid7.nexpose.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import org.rapid7.nexpose.api.IContentGenerator;
-import org.rapid7.nexpose.api.StringUtils;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
@@ -57,11 +56,12 @@ public class SiteSaveRequestHostsGenerator implements IContentGenerator
    }
 
    /**
-    * Knows how to print the xml output for hosts inside of a <Hosts> tag on the 
+    * Knows how to print the xml output for hosts inside of a <Hosts> tag on the
     * site save request.
     *
     * @see java.lang.Object#toString()
     */
+   @Override
    public String toString()
    {
       StringBuilder sb = new StringBuilder();
@@ -117,7 +117,7 @@ public class SiteSaveRequestHostsGenerator implements IContentGenerator
     */
    public void setHosts(List<String> hosts)
    {
-      this.m_hosts = hosts;
+      m_hosts = hosts;
    }
    /////////////////////////////////////////////////////////////////////////
    // non-Public fields

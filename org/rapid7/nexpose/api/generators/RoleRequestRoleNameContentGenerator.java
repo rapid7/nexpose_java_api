@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,7 +31,6 @@ import java.util.List;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import org.rapid7.nexpose.api.IContentGenerator;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
@@ -45,15 +44,16 @@ public class RoleRequestRoleNameContentGenerator implements IContentGenerator
    /////////////////////////////////////////////////////////////////////////
    // Public methods
    /////////////////////////////////////////////////////////////////////////
-   
+
    /**
     * Constructs a new RoleRequestRoleNameContentGenerator object.
-    */   
+    */
    public RoleRequestRoleNameContentGenerator()
    {
       m_roles = new ArrayList<String>();
    }
-   
+
+   @Override
    public String toString()
    {
       StringBuilder sb = new StringBuilder();
@@ -65,18 +65,18 @@ public class RoleRequestRoleNameContentGenerator implements IContentGenerator
       }
       return sb.toString();
    }
-   
+
    /**
     * Sets the contents of the generator that come as a parameter.
-    *  
+    *
     * @param contents Elements of the xml request.
-    */   
+    */
    @Override
    public void setContents(Element contents)
    {
       try
       {
-         final NodeList roles = 
+         final NodeList roles =
             (NodeList) XPathFactory.newInstance().newXPath().evaluate("Role", contents, XPathConstants.NODESET);
          for (int i = 0; i < roles.getLength(); i++)
          {
@@ -92,10 +92,10 @@ public class RoleRequestRoleNameContentGenerator implements IContentGenerator
          throw new RuntimeException("The roles could not be generated: " + e.toString());
       }
    }
-   
+
    /**
     * Returns the list of role names which were sent with the Role Detail.
-    * 
+    *
     * @return The list of RoleNames.
     */
    public List<String> getRoles()
@@ -105,19 +105,19 @@ public class RoleRequestRoleNameContentGenerator implements IContentGenerator
 
    /**
     * Sets the list of role names.
-    * 
+    *
     * @param roles The list of role names.
-    */   
+    */
    public void setRoles(List<String> roles)
    {
       m_roles = roles;
    }
-   
+
    /////////////////////////////////////////////////////////////////////////
    // Non-public fields
    /////////////////////////////////////////////////////////////////////////
-   
-   /** List of role IDs to be saved */   
+
+   /** List of role IDs to be saved */
    private List<String> m_roles;
 
 }

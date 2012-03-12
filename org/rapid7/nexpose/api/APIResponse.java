@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -65,7 +65,7 @@ public class APIResponse
       {
          throw new IllegalArgumentException("doc cannot be null");
       }
-      
+
       m_doc = doc;
    }
    /**
@@ -80,7 +80,7 @@ public class APIResponse
       {
          throw new IllegalArgumentException("doc cannot be null");
       }
-      
+
       m_doc = doc;
       m_finalXML = finalXML;
    }
@@ -89,7 +89,7 @@ public class APIResponse
     * Grabs a single XPath expression out of the response.
     *
     * @param xpath The XPath expression
-    * @return a String with the value of the evaluated xPath expression or 
+    * @return a String with the value of the evaluated xPath expression or
     *         null if it is not found.
     * @throws APIException when the Xpath expression is invalid.
     */
@@ -104,13 +104,13 @@ public class APIResponse
          throw new APIException("Error parsing response", e);
       }
    }
-   
+
    /**
     * Grabs a single XPath expression out of the response and parses it as an
     * int.
     *
     * @param xpath The XPath expression
-    * @return an int with the value of the evaluated xPath expression or 
+    * @return an int with the value of the evaluated xPath expression or
     *         null if it is not found.
     * @throws APIException when the Xpath expression is invalid.
     */
@@ -122,9 +122,9 @@ public class APIResponse
    /**
     * Grabs a single XPath expression out of the response and parses it as a
     * boolean.
-    * 
+    *
     * @param xpath The XPath expression
-    * @return a boolean with the value of the evaluated xPath expression or 
+    * @return a boolean with the value of the evaluated xPath expression or
     *         null if it is not found.
     * @throws APIException when the Xpath expression is invalid.
     */
@@ -132,13 +132,13 @@ public class APIResponse
    {
       return Boolean.parseBoolean(grab(xpath));
    }
-   
+
    /**
     * Grabs a single XPath expression out of the response and parses it as a
     * long
-    * 
+    *
     * @param xpath The XPath expression
-    * @return a long with the value of the evaluated xPath expression or 
+    * @return a long with the value of the evaluated xPath expression or
     *         null if it is not found.
     * @throws APIException when the Xpath expression is invalid.
     */
@@ -146,13 +146,13 @@ public class APIResponse
    {
       return Long.parseLong(grab(xpath));
    }
-   
+
    /**
     * Grabs a list of DOM nodes matching the given expression out of the
     * response.
-    * 
+    *
     * @param xpath The XPath expression
-    * @return a NodeList list of nodes with the values of the evaluated xPath 
+    * @return a NodeList list of nodes with the values of the evaluated xPath
     *         expression or null if none found.
     * @throws APIException when the Xpath expression is invalid.
     */
@@ -187,7 +187,7 @@ public class APIResponse
          throw new APIException("Error parsing repsonse", e);
       }
    }
-   
+
    /**
     * Retrieves the xml representation of the Document associated with this
     * response.
@@ -210,7 +210,7 @@ public class APIResponse
       catch (TransformerConfigurationException e)
       {
          throw new APIException ("Could not retrieve the String representation of the API's XML response due to a misconfiguration of the Transformer: " + e.toString());
-      } 
+      }
       catch (TransformerException e)
       {
          throw new APIException ("Could not retrieve the String representation of the API's XML response due to the Transformer: " + e.toString());
@@ -223,7 +223,7 @@ public class APIResponse
    {
       return m_finalXML;
    }
-   
+
    /**
     * @param finalXML the final XML associated with the response to set
     */

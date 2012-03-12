@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,14 +26,13 @@
  */
 package org.rapid7.nexpose.api.generators;
 
+import org.rapid7.nexpose.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import org.rapid7.nexpose.api.IContentGenerator;
-import org.rapid7.nexpose.api.StringUtils;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
@@ -69,7 +68,7 @@ public class SiteSaveRequestAlertsGenerator implements IContentGenerator
        */
       public void setServer(String server)
       {
-         this.m_server = server;
+         m_server = server;
       }
 
       /**
@@ -89,7 +88,7 @@ public class SiteSaveRequestAlertsGenerator implements IContentGenerator
        */
       public void setPort(String port)
       {
-         this.m_port = port;
+         m_port = port;
       }
       /**
        * Creates a new SysLog alert to be used in the site save request.
@@ -137,7 +136,7 @@ public class SiteSaveRequestAlertsGenerator implements IContentGenerator
        */
       public void setCommunity(String community)
       {
-         this.m_community = community;
+         m_community = community;
       }
 
       /**
@@ -157,7 +156,7 @@ public class SiteSaveRequestAlertsGenerator implements IContentGenerator
        */
       public void setServer(String server)
       {
-         this.m_server = server;
+         m_server = server;
       }
 
       /**
@@ -177,7 +176,7 @@ public class SiteSaveRequestAlertsGenerator implements IContentGenerator
        */
       public void setPort(String port)
       {
-         this.m_port = port;
+         m_port = port;
       }
 
       /**
@@ -203,7 +202,7 @@ public class SiteSaveRequestAlertsGenerator implements IContentGenerator
       private String m_server;
       /**The port associated with the SNMP Alert*/
       private String m_port;
-      
+
    }
    /**
     * An alert of type SMTP associated to this alerts generator for the site
@@ -234,7 +233,7 @@ public class SiteSaveRequestAlertsGenerator implements IContentGenerator
        */
       public void setSender(String community)
       {
-         this.m_sender = community;
+         m_sender = community;
       }
 
       /**
@@ -254,7 +253,7 @@ public class SiteSaveRequestAlertsGenerator implements IContentGenerator
        */
       public void setServer(String server)
       {
-         this.m_server = server;
+         m_server = server;
       }
 
       /**
@@ -274,7 +273,7 @@ public class SiteSaveRequestAlertsGenerator implements IContentGenerator
        */
       public void setPort(String port)
       {
-         this.m_port = port;
+         m_port = port;
       }
 
       /**
@@ -387,7 +386,7 @@ public class SiteSaveRequestAlertsGenerator implements IContentGenerator
        */
       public void setName(String name)
       {
-         this.m_name = name;
+         m_name = name;
       }
 
       /**
@@ -407,7 +406,7 @@ public class SiteSaveRequestAlertsGenerator implements IContentGenerator
        */
       public void setEnabled(String enabled)
       {
-         this.m_enabled = enabled;
+         m_enabled = enabled;
       }
 
       /**
@@ -678,11 +677,12 @@ public class SiteSaveRequestAlertsGenerator implements IContentGenerator
    }
 
    /**
-    * Knows how to print the xml output for hosts inside of a <Hosts> tag on the 
+    * Knows how to print the xml output for hosts inside of a <Hosts> tag on the
     * site save request.
     *
     * @see java.lang.Object#toString()
     */
+   @Override
    public String toString()
    {
       StringBuilder sb = new StringBuilder();
@@ -793,7 +793,7 @@ public class SiteSaveRequestAlertsGenerator implements IContentGenerator
                   try
                   {
                      Class<IContentGenerator> generator = (Class<IContentGenerator>) Class.forName("org.rapid7.nexpose.api.generators."+param.getAttribute("generator"));
-                     SMTPAlertRecipientGenerator recipientGenerator = (SMTPAlertRecipientGenerator) generator.newInstance(); 
+                     SMTPAlertRecipientGenerator recipientGenerator = (SMTPAlertRecipientGenerator) generator.newInstance();
                      recipientGenerator.setContents(param);
                      alert.setRecipientsGenerator(recipientGenerator);
                   }
@@ -863,7 +863,7 @@ public class SiteSaveRequestAlertsGenerator implements IContentGenerator
     */
    public void setHosts(List<SiteSaveRequestAlert> alerts)
    {
-      this.m_alerts = alerts;
+      m_alerts = alerts;
    }
    /////////////////////////////////////////////////////////////////////////
    // non-Public fields

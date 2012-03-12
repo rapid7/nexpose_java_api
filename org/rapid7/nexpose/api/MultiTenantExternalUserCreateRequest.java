@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,8 @@
  */
 package org.rapid7.nexpose.api;
 
-import org.rapid7.nexpose.api.APISession.*;
+import org.rapid7.nexpose.api.APISession.APISupportedVersion;
+import org.rapid7.nexpose.api.generators.IContentGenerator;
 
 /**
  * Represents the MultiTenantUserCreateRequest NeXpose API request for user's that are authenticated by an external resource.

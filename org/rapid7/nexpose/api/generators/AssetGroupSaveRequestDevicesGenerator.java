@@ -26,14 +26,13 @@
  */
 package org.rapid7.nexpose.api.generators;
 
+import org.rapid7.nexpose.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import org.rapid7.nexpose.api.IContentGenerator;
-import org.rapid7.nexpose.api.StringUtils;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
@@ -45,7 +44,7 @@ import org.w3c.dom.NodeList;
 public class AssetGroupSaveRequestDevicesGenerator implements IContentGenerator
 {
    /**
-    * Represents a site contained in an Engine Save Request 
+    * Represents a site contained in an Engine Save Request
     * @author Leonardo Varela
     */
    public static class AssetGroupDevice
@@ -53,7 +52,7 @@ public class AssetGroupSaveRequestDevicesGenerator implements IContentGenerator
       /////////////////////////////////////////////////////////////////////////
       // Public methods
       /////////////////////////////////////////////////////////////////////////
-   
+
       /**
        * Creates a new device associated to an asset group save request.
        *
@@ -87,7 +86,7 @@ public class AssetGroupSaveRequestDevicesGenerator implements IContentGenerator
        */
       public void setSiteId(String siteId)
       {
-         this.m_siteId = siteId;
+         m_siteId = siteId;
       }
 
       /**
@@ -103,7 +102,7 @@ public class AssetGroupSaveRequestDevicesGenerator implements IContentGenerator
        */
       public void setDeviceId(String deviceId)
       {
-         this.m_deviceId = deviceId;
+         m_deviceId = deviceId;
       }
 
       /**
@@ -119,7 +118,7 @@ public class AssetGroupSaveRequestDevicesGenerator implements IContentGenerator
        */
       public void setAddress(String address)
       {
-         this.m_address = address;
+         m_address = address;
       }
 
       /**
@@ -167,7 +166,7 @@ public class AssetGroupSaveRequestDevicesGenerator implements IContentGenerator
        */
       public void setDescription(String description)
       {
-         this.m_description = description;
+         m_description = description;
       }
       /////////////////////////////////////////////////////////////////////////
       // non-Public fields
@@ -201,6 +200,7 @@ public class AssetGroupSaveRequestDevicesGenerator implements IContentGenerator
    /* (non-Javadoc)
     * @see java.lang.Object#toString()
     */
+   @Override
    public String toString()
    {
       StringBuilder sb = new StringBuilder();
@@ -294,7 +294,7 @@ public class AssetGroupSaveRequestDevicesGenerator implements IContentGenerator
     */
    public void setDevices(List<AssetGroupDevice> devices)
    {
-      this.m_devices = devices;
+      m_devices = devices;
    }
    /////////////////////////////////////////////////////////////////////////
    // non-Public fields

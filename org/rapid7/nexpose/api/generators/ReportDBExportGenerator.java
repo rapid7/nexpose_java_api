@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,15 @@
  */
 package org.rapid7.nexpose.api.generators;
 
-import java.util.*;
-
-import javax.xml.xpath.*;
-
-import org.rapid7.nexpose.api.*;
-import org.rapid7.nexpose.api.domain.*;
-import org.w3c.dom.*;
+import org.rapid7.nexpose.api.domain.ReportDBExport;
+import org.rapid7.nexpose.utils.StringUtils;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 public class ReportDBExportGenerator  implements IContentGenerator
 {

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,17 +26,16 @@
  */
 package org.rapid7.nexpose.api.generators;
 
+import org.rapid7.nexpose.api.domain.ContactAddress;
+import org.rapid7.nexpose.utils.StringUtils;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import org.rapid7.nexpose.api.IContentGenerator;
-import org.rapid7.nexpose.api.StringUtils;
-import org.rapid7.nexpose.api.domain.ContactAddress;
 import org.w3c.dom.Element;
 
 /**
  * Generates Silo Organization element tags inside of the SiloCreate Silo Config
- * 
+ *
  * @author Leonardo Varela
  */
 public class SiloCreateOrganizationGenerator implements IContentGenerator
@@ -56,9 +55,10 @@ public class SiloCreateOrganizationGenerator implements IContentGenerator
 
    /**
     * Knows how to print the xml output for properties elements inside of a <SiloConfig> element on the silo Config.
-    * 
+    *
     * @see java.lang.Object#toString()
     */
+   @Override
    public String toString()
    {
       StringBuilder sb = new StringBuilder();
@@ -138,7 +138,7 @@ public class SiloCreateOrganizationGenerator implements IContentGenerator
 
    /**
     * Retrieves the Organization's url associated with the Silo Create config.
-    * 
+    *
     * @return the url associated with the Silo Create config.
     */
    public String getURL()
@@ -148,7 +148,7 @@ public class SiloCreateOrganizationGenerator implements IContentGenerator
 
    /**
     * Sets the URL of the organization associated with the Silo Create config.
-    * 
+    *
     * @param url The URL to be set.
     */
    public void setURL(String url)
@@ -245,7 +245,7 @@ public class SiloCreateOrganizationGenerator implements IContentGenerator
    {
       m_lastName = lastName;
    }
-   
+
    /**
     * Retrieves the last name associated with the organization.
     *
@@ -255,7 +255,7 @@ public class SiloCreateOrganizationGenerator implements IContentGenerator
    {
       return m_lastName;
    }
-   
+
    /**
     * Sets the phone number associated with the organization.
     *
@@ -265,7 +265,7 @@ public class SiloCreateOrganizationGenerator implements IContentGenerator
    {
       m_phoneNumber = phoneNumber;
    }
-   
+
    /**
     * Retrieves the phone number associated with the organization.
     *
@@ -275,7 +275,7 @@ public class SiloCreateOrganizationGenerator implements IContentGenerator
    {
       return m_phoneNumber;
    }
-   
+
    /**
     * Sets the title associated with the organization.
     *
@@ -285,11 +285,11 @@ public class SiloCreateOrganizationGenerator implements IContentGenerator
    {
       m_title = title;
    }
-   
+
    /**
     * Retrieves the title associated with the organization.
     *
-    * @return The title 
+    * @return The title
     */
    public String getTitle()
    {

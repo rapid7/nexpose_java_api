@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,8 +38,8 @@ public class ContactAddress
    /////////////////////////////////////////////////////////////////////////
 
    /**
-    * Retreives the city of the Address.
-    * 
+    * Retrieves the city of the Address.
+    *
     * @return The city of the address.
     */
    public String getCity()
@@ -69,7 +69,7 @@ public class ContactAddress
 
    /**
     * Sets the country of thre address.
-    * 
+    *
     * @param country The country to set.
     */
    public void setCountry(String country)
@@ -139,7 +139,7 @@ public class ContactAddress
 
    /**
     * Retrieves the zip code of the address.
-    * 
+    *
     * @return The zip of the address.
     */
    public String getZip()
@@ -156,6 +156,7 @@ public class ContactAddress
    {
       m_zip = zip;
    }
+
    /////////////////////////////////////////////////////////////////////////
    // Non-public fields
    /////////////////////////////////////////////////////////////////////////

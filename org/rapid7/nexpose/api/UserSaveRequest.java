@@ -1,18 +1,16 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
- *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
- *    * Redistributions of source code must retain the above copyright
- *      notice, this list of conditions and the following disclaimer.
- *    * Redistributions in binary form must reproduce the above copyright
- *      notice, this list of conditions and the following disclaimer in the
- *      documentation and/or other materials provided with the distribution.
- *    * Neither the name of the <organization> nor the
- *      names of its contributors may be used to endorse or promote products
- *      derived from this software without specific prior written permission.
- *
+ * * Redistributions of source code must retain the above copyright
+ * notice, this list of conditions and the following disclaimer.
+ * * Redistributions in binary form must reproduce the above copyright
+ * notice, this list of conditions and the following disclaimer in the
+ * documentation and/or other materials provided with the distribution.
+ * * Neither the name of the <organization> nor the
+ * names of its contributors may be used to endorse or promote products
+ * derived from this software without specific prior written permission.
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -27,8 +25,7 @@
 package org.rapid7.nexpose.api;
 
 import org.rapid7.nexpose.api.APISession.APISupportedVersion;
-import org.rapid7.nexpose.api.generators.UserSaveRequestGroupsGenerator;
-import org.rapid7.nexpose.api.generators.UserSaveRequestSitesGenerator;
+import org.rapid7.nexpose.api.generators.IContentGenerator;
 
 /**
  * Represents the UserSaveRequest NeXpose API request.
@@ -49,8 +46,8 @@ public class UserSaveRequest extends TemplateAPIRequest
     *        acquired one (You acquire one when you authenticate correctly with
     *        the login method in the {@link APISession} class). This is a
     *        String of 40 characters.
-    * @param syncId the synchronization id to identify the response associated 
-    *        with the response in asynchronous environments. It can be any 
+    * @param syncId the synchronization id to identify the response associated
+    *        with the response in asynchronous environments. It can be any
     *        string. This field is optional.
     * @param allGroups true if the user has access to all groups, false
     *        otherwise (specified when creating/saving a config and Group
@@ -58,10 +55,10 @@ public class UserSaveRequest extends TemplateAPIRequest
     * @param allSites true if the user has access to all sites, false otherwise
     *        (specified when creating/saving a config and Site elements are not
     *        specified)
-    * @param authSrcId the positive integer that identifies the authentication 
+    * @param authSrcId the positive integer that identifies the authentication
     *        source to be used to authenticate the user. Should be one of the
     *        existing authentication for correctness.
-    * @param email the email of the user, should have the right email format. 
+    * @param email the email of the user, should have the right email format.
     *        This field is optional.
     * @param enabled true (or 1) if the user is enabled, false (or 0) otherwise.
     *        This field is optional.
@@ -87,27 +84,27 @@ public class UserSaveRequest extends TemplateAPIRequest
     *        for a reference implementation. For QA testing you should construct
     *        your own {@link IContentGenerator} to generate all the edge test
     *        cases you can think of.
-    * @param groupsGenerator a Generator that knows how to output user groups 
+    * @param groupsGenerator a Generator that knows how to output user groups
     *        with IDs associated to it e.g. &lt;Group id="X"/&gt; where X is a
     *        non negative Integer. Please see
     *        {@link UserSaveRequestGroupsGenerator} for a reference
-    *        implementation. For QA testing you should construct your own 
+    *        implementation. For QA testing you should construct your own
     *        {@link IContentGenerator} to generate all the edge test cases you
     *        can think of.
     */
    public UserSaveRequest(
       String sessionId,
-      String syncId, 
+      String syncId,
       String allGroups,
       String allSites,
       String authSrcId,
       String email,
-      String enabled, 
-      String fullname, 
-      String id, 
-      String name, 
-      String password, 
-      String roleName, 
+      String enabled,
+      String fullname,
+      String id,
+      String name,
+      String password,
+      String roleName,
       IContentGenerator sitesGenerator,
       IContentGenerator groupsGenerator)
    {

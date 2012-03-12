@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,18 +26,17 @@
  */
 package org.rapid7.nexpose.api.generators;
 
+import org.rapid7.nexpose.api.domain.ContactAddress;
+import org.rapid7.nexpose.api.domain.SiloConfigPCIMerchant;
+import org.rapid7.nexpose.utils.StringUtils;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import org.rapid7.nexpose.api.IContentGenerator;
-import org.rapid7.nexpose.api.StringUtils;
-import org.rapid7.nexpose.api.domain.ContactAddress;
-import org.rapid7.nexpose.api.domain.SiloConfigPCIMerchant;
 import org.w3c.dom.Element;
 
 /**
  * Generates Silo PCI Merchant element tags inside of the SiloCreate Silo Config
- * 
+ *
  * @author Leonardo Varela
  */
 public class SiloCreateMerchantGenerator implements IContentGenerator
@@ -57,9 +56,10 @@ public class SiloCreateMerchantGenerator implements IContentGenerator
 
    /**
     * Knows how to print the xml output for properties elements inside of a <SiloConfig> element on the silo Config.
-    * 
+    *
     * @see java.lang.Object#toString()
     */
+   @Override
    public String toString()
    {
       StringBuilder sb = new StringBuilder();
@@ -198,7 +198,7 @@ public class SiloCreateMerchantGenerator implements IContentGenerator
 
    /**
     * Retrieves the PCI MErchant associated with the Silo Create config.
-    * 
+    *
     * @return the PCI Merchant associated with the Silo Create config.
     */
    public SiloConfigPCIMerchant getPCIMerchant()
@@ -208,12 +208,12 @@ public class SiloCreateMerchantGenerator implements IContentGenerator
 
    /**
     * Sets the PCI MErchant associated with the Silo Create config.
-    * 
+    *
     * @param merchat The PCI MErchant to be set.
     */
    public void setSilos(SiloConfigPCIMerchant merchant)
    {
-      this.m_pciMerchant = merchant;
+      m_pciMerchant = merchant;
    }
 
    // ///////////////////////////////////////////////////////////////////////

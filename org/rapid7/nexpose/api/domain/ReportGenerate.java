@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,7 @@
  */
 package org.rapid7.nexpose.api.domain;
 
-// TODO - not needed for initial implenentation
+// TODO - not needed for initial implementation
 public class ReportGenerate
 {
-  private ReportGenerateSchedule m_schedule = null;
 }

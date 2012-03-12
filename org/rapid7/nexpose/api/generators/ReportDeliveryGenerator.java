@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,13 @@
  */
 package org.rapid7.nexpose.api.generators;
 
-import javax.xml.xpath.*;
-
-import org.rapid7.nexpose.api.*;
-import org.rapid7.nexpose.api.domain.*;
-import org.w3c.dom.*;
+import org.rapid7.nexpose.api.domain.ReportDeliveryStorage;
+import org.rapid7.nexpose.utils.StringUtils;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 public class ReportDeliveryGenerator  implements IContentGenerator
 {
@@ -80,6 +82,7 @@ public class ReportDeliveryGenerator  implements IContentGenerator
        }
        m_storage =
              new ReportDeliveryStorage(contents.getAttribute("storeOnServer"),location);
+      // TODO - implement locations if needed in future for other report types than DBExport
     }
     catch (XPathExpressionException e)
     {
@@ -97,7 +100,7 @@ public class ReportDeliveryGenerator  implements IContentGenerator
 
   public void setStorage(ReportDeliveryStorage storage)
   {
-    this.m_storage = storage;
+    m_storage = storage;
   }
 
   private ReportDeliveryStorage m_storage;

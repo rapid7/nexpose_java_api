@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2010, Rapid7 LLC, Boston, MA, USA.
+ * Copyright (C) 2012, Rapid7 LLC, Boston, MA, USA.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,15 +24,17 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
-// TODO - Replace all of this with a real mimie reader.....
+// TODO - Replace all of this with a real mime reader.....
 
 package org.rapid7.nexpose.api.domain;
 
-import java.io.*;
-import java.util.*;
-
-import org.xml.sax.*;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.io.StringReader;
+import java.util.StringTokenizer;
+import org.xml.sax.InputSource;
 
 public class MimeReader
 {
@@ -42,14 +44,12 @@ public class MimeReader
   private String lastHeader = "";
   private String docHeader = "";
   private String firstLine = "";
-  private byte[] preamble = {};
-  private byte[] epilogue = {};
   private boolean justGotPart = false;
   private ByteArrayOutputStream readBuffer = new ByteArrayOutputStream(1024);
 
   public MimeReader(Reader reader)
   {
-    this.in = reader;
+    in = reader;
     getMimeSeparator();
   }
 
@@ -57,9 +57,9 @@ public class MimeReader
   {
     InputSource inputSource = new InputSource(new StringReader(firstLine + getPartDataAsString()));
 
-    while (this.nextPart())
+    while (nextPart())
     {
-      this.getPartData(os);
+      getPartData(os);
     }
     return inputSource;
   }
@@ -85,7 +85,7 @@ public class MimeReader
       String tempSeparator = separator;
       separator = "";
       justGotPart = false;
-      epilogue = getPartDataAsBytes();
+      getPartDataAsBytes();
       separator = tempSeparator;
       lastSeparator = "";
       lastHeader = "";

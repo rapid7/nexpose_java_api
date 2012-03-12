@@ -25,13 +25,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package org.rapid7.nexpose.api.examples;
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
 import org.rapid7.nexpose.api.APIException;
 import org.rapid7.nexpose.api.APISession;
 import org.rapid7.nexpose.api.APISession.APISupportedVersion;
-import org.rapid7.nexpose.api.UserSummary;
+import org.rapid7.nexpose.api.domain.UserSummary;
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
 
 /**
  * Deletes a user by id or user name.
@@ -41,16 +41,16 @@ import org.rapid7.nexpose.api.UserSummary;
 public class DeleteUserByNameOrID
 {
    APISession session = null;
-   
+
    /**
     * Body of the API call.
     */
    public void deleteUserByNameOrID(String[] args) throws IOException, APIException
-   {      
+   {
       // ALWAYS LOGIN BEFORE OPERATIONS.
       APISession session = getSession(args);
       String sessionID = session.getSessionID();
-      
+
       // Check if an integer was passed in
       String user = args[4].trim();
       boolean isUserInt = false;
@@ -58,9 +58,9 @@ public class DeleteUserByNameOrID
       {
          Integer.parseInt(user);
          isUserInt = true;
-         
+
          // Passed in value was integer ... no need to do lookup
-         session.userDeleteRequest(sessionID, null, user);         
+         session.userDeleteRequest(sessionID, null, user);
          System.out.println("\n*** User with ID: " + user + " was deleted successfully. ***");
       }
       catch (NumberFormatException nfe)
@@ -71,10 +71,10 @@ public class DeleteUserByNameOrID
       {
          System.out.println("\n*** The user with ID: " + user + " could not be deleted ***");
       }
-           
+
       if (!isUserInt)
       {
-         boolean foundUser = false; 
+         boolean foundUser = false;
          List<UserSummary> userSummaries = (List<UserSummary>)session.listUsers(sessionID, null);
 
          for (UserSummary userSummary : userSummaries)
@@ -94,21 +94,21 @@ public class DeleteUserByNameOrID
                }
             }
          }
-         
+
          if (!foundUser)
          {
             System.out.println("\n*** Could not find user: " + user );
          }
       }
-      
-      
+
+
       // ALWAYS LOGOUT WHEN FINISHED.
       session.logout(sessionID, null);
    }
-   
+
    /*
     * Gets authenticated session object
-    * 
+    *
     */
    private APISession getSession(String[] args) throws IOException, APIException
    {
@@ -128,7 +128,7 @@ public class DeleteUserByNameOrID
       }
       return session;
    }
-   
+
    public static void main(String[] args) throws IOException, APIException
    {
       if (args.length < 5)
@@ -137,7 +137,7 @@ public class DeleteUserByNameOrID
          System.out.println("USAGE: java DeleteUserByNameOrID nexpose_netaddress, port, username, password, user");
          return;
       }
-      
+
       new DeleteUserByNameOrID().deleteUserByNameOrID(args);
    }
 }

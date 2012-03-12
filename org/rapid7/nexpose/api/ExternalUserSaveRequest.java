@@ -26,7 +26,8 @@
  */
 package org.rapid7.nexpose.api;
 
-import org.rapid7.nexpose.api.APISession.*;
+import org.rapid7.nexpose.api.APISession.APISupportedVersion;
+import org.rapid7.nexpose.api.generators.IContentGenerator;
 
 /**
  * Represents the UserSaveRequest NeXpose API request for user's that are authenticated by an external resource.
