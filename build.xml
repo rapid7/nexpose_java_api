@@ -24,7 +24,7 @@
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
-            <fileset dir="src" excludes="**/*.launch, **/*.java"/>
+            <fileset dir="." excludes="**/*.launch, **/*.java, **/*.classpath, **/*.project, .git/**, .settings/**, , **/*build.xml, **/*.jar"/>
         </copy>
     </target>
     <!-- deletes the bin directory -->
@@ -35,7 +35,7 @@
     <target depends="init" name="compile">
         <echo message="${ant.project.name}: ${ant.file} : ${api-client.build.date}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
-            <src path="src"/>
+            <src path="."/>
             <classpath refid="api-client.classpath"/>
         </javac>
     </target>
@@ -43,7 +43,6 @@
     <target depends="compile" name="jar">
         <jar destfile="api-client.jar">
            <fileset dir="bin"/>
-           <fileset dir="src"/>
            <manifest>
                <!-- Who is building this jar? -->
                <attribute name="Built-By" value="${user.name}"/>
@@ -60,13 +59,13 @@
 	    <javadoc destdir="${doc}" 
 	            classpathref="api-client.classpath"
 	             packagenames="org.rapid7.nexpose.api.*"
-	             sourcepath="src"
+	             sourcepath="."
 	             Author="true" version="true" Use="true" noindex="true"
 	             Windowtitle="API client"
 	             Doctitle="API Client"
 	             bottom="Created by Rapid7 LLC.">
 	      <arg line="-private" />
-	      <fileset dir="src">
+	      <fileset dir=".">
 	        <include name="**/*.java"/>
 	      </fileset>
 	    </javadoc>
