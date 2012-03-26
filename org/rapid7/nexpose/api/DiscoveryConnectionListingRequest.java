@@ -38,11 +38,11 @@ public class DiscoveryConnectionListingRequest extends TemplateAPIRequest
    /////////////////////////////////////////////////////////////////////////
 
    /**
-    * Constructs a discovery Connection listing request with its associated API version
+    * Constructs a {@link DiscoveryConnectionListingRequest} with its associated API version
     * information.
-    *
+    * 
     * @param sessionId the session to submit the request with. May not be {@code null} nor empty and must
-    * be a 40 character hex {@link String}.
+    *        be a 40 character hex {@link String}.
     * @param syncId the sync id to identify the response. May be {@code null}.
     */
    public DiscoveryConnectionListingRequest(String sessionId, String syncId)

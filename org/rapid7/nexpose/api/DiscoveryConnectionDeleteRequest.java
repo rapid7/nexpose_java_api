@@ -38,11 +38,11 @@ public class DiscoveryConnectionDeleteRequest extends TemplateAPIRequest
    /////////////////////////////////////////////////////////////////////////
 
    /**
-    * Constructs a discovery connection delete request with its associated API version
+    * Constructs a {@link DiscoveryConnectionDeleteRequest} with its associated API version
     * information.
-    *
+    * 
     * @param sessionId the session to submit the request with. May not be {@code null} nor empty and must
-    * be a 40 character hex {@link String}.
+    *        be a 40 character hex {@link String}.
     * @param syncId the sync id to identify the response. May be {@code null}.
     * @param connectionID the id of the DiscoveryConnection.
     */
