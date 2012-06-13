@@ -29,30 +29,25 @@ package org.rapid7.nexpose.api;
 import org.rapid7.nexpose.api.APISession.APISupportedVersion;
 
 /**
- * Represents the LoginRequest NeXpose API request.
+ * Encapsulates the ReportConfigRequest NeXpose API request.
  *
- * @author Leonardo Varela
+ * @author Murali Rongali
  */
-public class LoginRequest extends TemplateAPIRequest
+public class ReportConfigRequest  extends TemplateAPIRequest
 {
-   /////////////////////////////////////////////////////////////////////////
-   // Public methods
-   /////////////////////////////////////////////////////////////////////////
-
    /**
-    * Creates a new LoginRequest NeXpose API request.
+    * Creates a new ReportConfigRequest NeXpose API request.
     *
+    * @param sessionId the session to be used if different from the one on the
+    *        current APISession. useful when testing edge cases and testing in
+    *        general.
     * @param syncId the syncId to identify the request/response pair.
-    * @param username the username to log in with.
-    * @param password the password to log in with.
-    * @param siloId the id of the silo.
+    * @param reportCfgID the id of the report config.
     */
-   public LoginRequest(String syncId, String username, String password, String siloId)
+   public ReportConfigRequest(String sessionID, String syncID, String reportCfgID)
    {
-      super(null, syncId);
-      set("username", username);
-      set("password", password);
-      set("siloId", siloId);
+      super(sessionID, syncID);
+      set("reportcfgId", reportCfgID);
       m_firstSupportedVersion = APISupportedVersion.V1_0;
       m_lastSupportedVersion = APISupportedVersion.V1_1;
    }

@@ -1,0 +1,1 @@
+<DeviceDeleteRequest session-id="${session-id}" sync-id="${sync-id}" device-id="${deviceId}" />

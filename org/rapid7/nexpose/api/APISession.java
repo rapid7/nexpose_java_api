@@ -116,6 +116,27 @@ public class APISession
       final String username,
       String password) throws MalformedURLException
    {
+      this(nxURL, protocol, version, username, password, "default");
+   }
+
+   /**
+    * Constructs a new APISession that will connect to the given URL.
+    *
+    * @param nxURL The base URL of the NeXpose server's API endpoint.
+    * @param username The user name for logging in.
+    * @param password The password for logging in.
+    * @param siloId The siloId for logging in.
+    * @throws MalformedURLException When the url/protocol/version provided are
+    * malformed.
+    */
+   public APISession(
+      final URL nxURL,
+      final String protocol,
+      APISupportedVersion version,
+      final String username,
+      String password,
+      String siloId) throws MalformedURLException
+   {
       if (nxURL == null)
       {
          throw new IllegalArgumentException("nxURL cannot be null");
@@ -131,6 +152,7 @@ public class APISession
       m_nxURL = nxURL;
       m_username = username;
       m_password = password;
+      m_siloId = siloId;
       // all 1.0 api version should be redirected to 1.1
       if (version == APISupportedVersion.V1_0)
          version = APISupportedVersion.V1_1;
@@ -211,13 +233,31 @@ public class APISession
     */
    public APIResponse login(String syncId) throws IOException, APIException
    {
+     return login(syncId, "default");
+   }
+
+   /**
+    * Opens a connection and logs in to the NeXpose API.
+    *
+    * @param syncId the synchronization id to identify the response associated
+    *        with the response in asynchronous environments. It can be any
+    *        string. This field is optional.
+    * @param siloId the id of the silo.
+    * @return APIResponse the response from the server.
+    * @throws IOException when the connection to the NeXpose instance fails.
+    * @throws APIException When there is a problem processing the API request.
+    */
+   public APIResponse login(String syncId, String siloId) throws IOException, APIException
+   {
       final LoginRequest request = new LoginRequest(
          syncId,
          m_username,
-         m_password);
+         m_password,
+         siloId);
       final APIResponse response = new APIResponse(
          request(open(request), auth(request)),
          request.getRequestXML());
+      System.out.println("response>>" + response.getResponse());
       if (response.grabNode("//Failure") != null)
       {
          m_errorHandler.handleError(request, response, this, "Login failed");
@@ -225,7 +265,6 @@ public class APISession
       m_sessionID = response.grab("/LoginResponse/@session-id");
       return response;
    }
-
    /**
     * Logs out of the NeXpose API.
     *
@@ -2047,6 +2086,8 @@ public class APISession
    private String m_username;
    /** The password for logging in to the API */
    private String m_password;
+   /** The siloId for logging in to the API */
+   private String m_siloId;
    /** The NeXpose API session ID, may be <code>null</code> */
    private String m_sessionID;
    /** The SSL context used for all connections */

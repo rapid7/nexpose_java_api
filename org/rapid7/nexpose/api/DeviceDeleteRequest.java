@@ -29,30 +29,25 @@ package org.rapid7.nexpose.api;
 import org.rapid7.nexpose.api.APISession.APISupportedVersion;
 
 /**
- * Represents the LoginRequest NeXpose API request.
+ * Encapsulates the DeviceDeleteRequest NeXpose API request.
  *
- * @author Leonardo Varela
+ * @author Murali Rongali
  */
-public class LoginRequest extends TemplateAPIRequest
+public class DeviceDeleteRequest  extends TemplateAPIRequest
 {
-   /////////////////////////////////////////////////////////////////////////
-   // Public methods
-   /////////////////////////////////////////////////////////////////////////
-
    /**
-    * Creates a new LoginRequest NeXpose API request.
+    * Creates a new DeviceDeleteRequest NeXpose API request.
     *
+    * @param sessionId the session to be used if different from the one on the
+    *        current APISession. useful when testing edge cases and testing in
+    *        general.
     * @param syncId the syncId to identify the request/response pair.
-    * @param username the username to log in with.
-    * @param password the password to log in with.
-    * @param siloId the id of the silo.
+    * @param deviceId the id of the device.
     */
-   public LoginRequest(String syncId, String username, String password, String siloId)
+   public DeviceDeleteRequest(String sessionID, String syncID, String deviceId)
    {
-      super(null, syncId);
-      set("username", username);
-      set("password", password);
-      set("siloId", siloId);
+      super(sessionID, syncID);
+      set("deviceId", deviceId);
       m_firstSupportedVersion = APISupportedVersion.V1_0;
       m_lastSupportedVersion = APISupportedVersion.V1_1;
    }

@@ -27,32 +27,50 @@
 package org.rapid7.nexpose.api;
 
 import org.rapid7.nexpose.api.APISession.APISupportedVersion;
+import org.rapid7.nexpose.api.generators.IContentGenerator;
 
 /**
- * Represents the LoginRequest NeXpose API request.
+ * Encapsulates the ReportAdhocGenerateRequest NeXpose API request.
  *
- * @author Leonardo Varela
+ * @author Murali Rongali
  */
-public class LoginRequest extends TemplateAPIRequest
+public class ReportAdhocGenerateRequest extends TemplateAPIRequest
 {
    /////////////////////////////////////////////////////////////////////////
    // Public methods
    /////////////////////////////////////////////////////////////////////////
 
    /**
-    * Creates a new LoginRequest NeXpose API request.
+    * Constructs a ReportAdhocGenerateRequest with its associated API version
+    * information.
     *
-    * @param syncId the syncId to identify the request/response pair.
-    * @param username the username to log in with.
-    * @param password the password to log in with.
-    * @param siloId the id of the silo.
+    * @param sessionId The session to submit the request with. May not be {@code null} nor empty and must
+    * be a 40 character hex {@link String}.
+    * @param syncId The sync id to identify the response. May be {@code null}.
+    * @param reportFormat The format of the Adhoc report.
+    * @param reportTemplateId The id of the report template.
+    * @param compareTo The date to use as the baseline scan in ISO 8601 format, like YYYYMMDDTHHMMSSss.
+    * @param filtersGenerator a Generator that knows how to output filter section of
+    *        filter sections that are to be associated with the Adhoc report generate. e.g.
+    *        &lt;Filter id="1" type="site"/&gt;. Please see
+    *    {@link ReportFiltersContentGenerator} for a reference
+    *    implementation. For QA testing you should construct your own
+    *    {@link IContentGenerator} to generate all the edge test cases you
+    *    can think of.
     */
-   public LoginRequest(String syncId, String username, String password, String siloId)
+   public ReportAdhocGenerateRequest(
+      String sessionId,
+      String syncId,
+      String reportFormat,
+      String reportTemplateId,
+      String compareTo,
+      IContentGenerator filtersGenerator)
    {
-      super(null, syncId);
-      set("username", username);
-      set("password", password);
-      set("siloId", siloId);
+      super(sessionId, syncId);
+      set("reportFormat", reportFormat);
+      set("reportTemplateId", reportTemplateId);
+      set("compareTo", compareTo);
+      set("filtersGenerator", filtersGenerator);
       m_firstSupportedVersion = APISupportedVersion.V1_0;
       m_lastSupportedVersion = APISupportedVersion.V1_1;
    }

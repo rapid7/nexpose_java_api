@@ -1,0 +1,1 @@
+<ReportHistoryRequest reportcfg-id="${reportcfgId}" session-id="${session-id}" sync-id="${sync-id}"/>

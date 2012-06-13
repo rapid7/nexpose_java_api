@@ -1,0 +1,1 @@
+<ReportTemplateConfigRequest session-id="${session-id}" sync-id="${sync-id}" template-id="${reportTemplateId}"/>

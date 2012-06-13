@@ -1,0 +1,9 @@
+<SiteDevicesScanRequest session-id="${session-id}" sync-id="${sync-id}" site-id="${siteId}">
+   <Devices>
+      ${devicesGenerator}
+   </Devices>
+   <Hosts>
+      ${siteHostsHostGenerator}
+      ${siteHostsRangeGenerator}
+   </Hosts>
+</SiteDevicesScanRequest>
