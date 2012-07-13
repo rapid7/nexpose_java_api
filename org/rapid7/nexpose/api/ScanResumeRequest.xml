@@ -1,0 +1,1 @@
+<ScanResumeRequest session-id="${session-id}" sync-id="${sync-id}" scan-id="${scanId}"/>
