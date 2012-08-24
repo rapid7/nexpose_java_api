@@ -26,7 +26,76 @@
  */
 package org.rapid7.nexpose.api.domain;
 
-// TODO - not needed for initial implementation
+
+/**
+ * Represents generate element retrieved by the report save API request.
+ *
+ * @author Murali Rongali
+ */
 public class ReportGenerate
 {
+   /////////////////////////////////////////////////////////////////////////
+   // Public methods
+   /////////////////////////////////////////////////////////////////////////
+
+   /**
+    * Creates a ReportGenerate object.
+    *
+    * @param afterScan the flag to generate a report after every scan or not.
+    * @param schedule the flag to set schedule.
+    */
+   public ReportGenerate(String afterScan, String schedule)
+   {
+      m_afterScan = afterScan;
+      m_schedule = schedule;
+   }
+
+   /**
+    * Retrieves the after scan flag.
+    *
+    * @return The after scan flag to generate report.
+    */
+   public String getAfterScan()
+   {
+      return m_afterScan;
+   }
+
+   /**
+    * Sets the afterScan flag.
+    *
+    * @param afterScan The afterScan flag to set.
+    */
+   public void setAfterScan(String afterScan)
+   {
+      m_afterScan = afterScan;
+   }
+
+   /**
+    * Retrieves the schedule is enabled or not.
+    *
+    * @return The schedule flag to determine whether schedule is enabled or not.
+    */
+   public String getSchedule()
+   {
+      return m_schedule;
+   }
+
+   /**
+    * Sets the schedule flag in 0|1 format.
+    *
+    * @param schedule the schedule flag for report generate.
+    */
+   public void setSchedule(String schedule)
+   {
+      m_schedule = schedule;
+   }
+
+   /////////////////////////////////////////////////////////////////////////
+   // Non-public fields
+   /////////////////////////////////////////////////////////////////////////
+
+   /**Represents the city of the address.*/
+   private String m_afterScan;
+   /**Represents the country of the address.*/
+   private String m_schedule;
 }

@@ -26,14 +26,91 @@
  */
 package org.rapid7.nexpose.api.generators;
 
+import org.rapid7.nexpose.api.domain.ReportGenerate;
+import org.rapid7.nexpose.utils.StringUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
-// TODO - Not needed for DBExport - initial implementation
-public class ReportGenerateGenerator  implements IContentGenerator
+/**
+ * Represents generate element retrieved by the report save API request.
+ *
+ * @author Murali Rongali
+ */
+public class ReportGenerateGenerator implements IContentGenerator
 {
-  @Override
-  public void setContents(Element contents)
-  {
 
-  }
+   /////////////////////////////////////////////////////////////////////////
+   // Public methods
+   /////////////////////////////////////////////////////////////////////////
+
+   /**
+    * Creates a ReportGenerateGenerator for the report save.
+    */
+   public ReportGenerateGenerator() {}
+
+   /**
+    * Knows how to print the xml output for Generate element on the report save.
+    *
+    * @see java.lang.Object#toString()
+    */
+   @Override
+   public String toString()
+   {
+      StringBuilder sb = new StringBuilder();
+      sb.append("<Generate after-scan=\"");
+         sb.append(StringUtils.xmlEscape(m_reportGenrate.getAfterScan()));
+         sb.append("\" schedule=\"");
+         sb.append(StringUtils.xmlEscape(m_reportGenrate.getSchedule()));
+         sb.append("\"/>");
+      return sb.toString();
+   }
+
+   @Override
+   public void setContents(Element contents)
+   {
+      try
+      {
+         final Element elementOrganization = (Element) XPathFactory.newInstance().newXPath().evaluate("Generate", contents,
+            XPathConstants.NODE);
+         String afterScan = elementOrganization.getAttribute("after-scan");
+         String schedule = elementOrganization.getAttribute("schedule");
+         m_reportGenrate = new ReportGenerate(afterScan, schedule);
+      }
+      catch (XPathExpressionException e)
+      {
+         throw new RuntimeException("The Generate could not be generated: " + e.toString());
+      }
+   }
+
+   /**
+    * Retrieves a list of the sites associated with the Save Engine Request.
+    *
+    * @return the sites associated with the Save Engine request
+    */
+   public ReportGenerate getReportGenerate()
+   {
+      return m_reportGenrate;
+   }
+
+   /**
+    * Sets the list of sites associated with the Save Engine Request.
+    * @param sites the sites to be set
+    */
+   public void setReportGenerate(ReportGenerate reportGenerate)
+   {
+      m_reportGenrate = reportGenerate;
+   }
+
+   /////////////////////////////////////////////////////////////////////////
+   // non-Public fields
+   /////////////////////////////////////////////////////////////////////////
+
+   private ReportGenerate m_reportGenrate;
 }

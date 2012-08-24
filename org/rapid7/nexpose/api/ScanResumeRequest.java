@@ -40,7 +40,7 @@ public class ScanResumeRequest extends TemplateAPIRequest
    /////////////////////////////////////////////////////////////////////////
 
    /**
-    * Creates a ScanPauseRequest NeXpose API Request. Sets the first API
+    * Creates a ScanResumeRequest NeXpose API Request. Sets the first API
     * supported version to 1.0 and the last supported version to 1.1.
     *
     * NOTE: All parameters are strings or generators, since we want to be able
