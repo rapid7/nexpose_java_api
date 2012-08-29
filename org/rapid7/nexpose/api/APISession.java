@@ -257,7 +257,6 @@ public class APISession
       final APIResponse response = new APIResponse(
          request(open(request), auth(request)),
          request.getRequestXML());
-      System.out.println("response>>" + response.getResponse());
       if (response.grabNode("//Failure") != null)
       {
          m_errorHandler.handleError(request, response, this, "Login failed");

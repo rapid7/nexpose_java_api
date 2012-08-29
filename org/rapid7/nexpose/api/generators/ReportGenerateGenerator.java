@@ -27,6 +27,7 @@
 package org.rapid7.nexpose.api.generators;
 
 import org.rapid7.nexpose.api.domain.ReportGenerate;
+import org.rapid7.nexpose.api.domain.ReportGenerateSchedule;
 import org.rapid7.nexpose.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -68,7 +69,22 @@ public class ReportGenerateGenerator implements IContentGenerator
          sb.append(StringUtils.xmlEscape(m_reportGenrate.getAfterScan()));
          sb.append("\" schedule=\"");
          sb.append(StringUtils.xmlEscape(m_reportGenrate.getSchedule()));
-         sb.append("\"/>");
+         ReportGenerateSchedule genSchedule = m_reportGenrate.getGenerateSchedule();
+         if (genSchedule == null)
+            sb.append("\"/>");
+         else {
+            sb.append("\"> <Schedule type=\"");
+            sb.append(StringUtils.xmlEscape(genSchedule.getType()));
+            sb.append("\" interval=\"");
+            sb.append(StringUtils.xmlEscape(genSchedule.getInterval()));
+            sb.append("\" start=\"");
+            sb.append(StringUtils.xmlEscape(genSchedule.getStart()));
+            if (genSchedule.getStart() != null && genSchedule.getStart().equalsIgnoreCase("")) {
+               sb.append("\" notValidAfter=\"");
+               sb.append(StringUtils.xmlEscape(genSchedule.getType()));
+            }
+            sb.append("\"/> </Generate>");
+         }
       return sb.toString();
    }
 
@@ -77,11 +93,22 @@ public class ReportGenerateGenerator implements IContentGenerator
    {
       try
       {
-         final Element elementOrganization = (Element) XPathFactory.newInstance().newXPath().evaluate("Generate", contents,
+         final Element elementGenerate = (Element) XPathFactory.newInstance().newXPath().evaluate("Generate", contents,
             XPathConstants.NODE);
-         String afterScan = elementOrganization.getAttribute("after-scan");
-         String schedule = elementOrganization.getAttribute("schedule");
+         String afterScan = elementGenerate.getAttribute("after-scan");
+         String schedule = elementGenerate.getAttribute("schedule");
+         final Element elementSchedule = (Element) XPathFactory.newInstance().newXPath().evaluate("Schedule", contents,
+            XPathConstants.NODE);
+         String type = elementSchedule.getAttribute("type");
+         String interval = elementSchedule.getAttribute("interval");
+         String startDate = elementSchedule.getAttribute("start");
+         String notValidAfter = elementSchedule.getAttribute("notValidAfter");
+         ReportGenerateSchedule genSchedule = null;
+         if (type != null)
+            genSchedule = new ReportGenerateSchedule(type, interval, startDate, notValidAfter);
          m_reportGenrate = new ReportGenerate(afterScan, schedule);
+         if (genSchedule != null)
+            m_reportGenrate.setGenerateSchedule(genSchedule);
       }
       catch (XPathExpressionException e)
       {

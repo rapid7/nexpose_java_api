@@ -48,6 +48,21 @@ public class ReportGenerate
    {
       m_afterScan = afterScan;
       m_schedule = schedule;
+      m_genSchedule = null;
+   }
+
+   /**
+    * Creates a ReportGenerate object.
+    *
+    * @param afterScan the flag to generate a report after every scan or not.
+    * @param schedule the flag to set schedule.
+    * @param genSchedule the schedule element data.
+    */
+   public ReportGenerate(String afterScan, String schedule, ReportGenerateSchedule genSchedule)
+   {
+      m_afterScan = afterScan;
+      m_schedule = schedule;
+      m_genSchedule = genSchedule;
    }
 
    /**
@@ -90,12 +105,34 @@ public class ReportGenerate
       m_schedule = schedule;
    }
 
+   /**
+    * Retrieves the GenerateSchedule object.
+    *
+    * @return The object of ReportGenerateSchedule.
+    */
+   public ReportGenerateSchedule getGenerateSchedule()
+   {
+      return m_genSchedule;
+   }
+
+   /**
+    * Sets the GenerateSchedule object.
+    *
+    * @param genSchedule the schedule object that represents schedule element.
+    */
+   public void setGenerateSchedule(ReportGenerateSchedule genSchedule)
+   {
+      m_genSchedule = genSchedule;
+   }
    /////////////////////////////////////////////////////////////////////////
    // Non-public fields
    /////////////////////////////////////////////////////////////////////////
 
-   /**Represents the city of the address.*/
+   /**Represents the report generation after every scan.*/
    private String m_afterScan;
-   /**Represents the country of the address.*/
+   /**Represents the report generation schedule.*/
    private String m_schedule;
+   /**Represents the schedule element.*/
+   private ReportGenerateSchedule m_genSchedule;
+   
 }
