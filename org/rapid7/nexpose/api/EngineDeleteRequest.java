@@ -48,10 +48,11 @@ public class EngineDeleteRequest extends TemplateAPIRequest
     * @param syncId the syncId to identify the request/response pair.
     * @param engineId the engine id to to be deleted
     */
-   public EngineDeleteRequest(String sessionId, String syncId, String engineId)
+   public EngineDeleteRequest(String sessionId, String syncId, String engineId, String scope)
    {
       super(sessionId, syncId);
       set("engineId", engineId);
+      set("scope", scope);
       m_firstSupportedVersion = APISupportedVersion.V1_2;
       m_lastSupportedVersion = APISupportedVersion.V1_2;
    }

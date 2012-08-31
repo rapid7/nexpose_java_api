@@ -6,6 +6,7 @@
       name="${engineConfigName}"
       address="${engineConfigAddress}"
       port="${engineConfigPort}"
+      scope="${engineConfigScope}"
       priority="${engineConfigPriority}">
       ${sitesGenerator}
    </EngineConfig>

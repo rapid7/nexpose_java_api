@@ -59,6 +59,7 @@ public class EngineSaveRequest extends TemplateAPIRequest
       String engineConfigAddress,
       String engineConfigPort,
       String engineConfigPriority,
+      String engineConfigScope,
       IContentGenerator sitesGenerator)
    {
       super(sessionId, syncId);
@@ -67,6 +68,7 @@ public class EngineSaveRequest extends TemplateAPIRequest
       set("engineConfigAddress", engineConfigAddress);
       set("engineConfigPort", engineConfigPort);
       set("engineConfigPriority", engineConfigPriority);
+      set("engineConfigScope", engineConfigScope);
       set("sitesGenerator", sitesGenerator);
       m_firstSupportedVersion = APISupportedVersion.V1_2;
       m_lastSupportedVersion = APISupportedVersion.V1_2;

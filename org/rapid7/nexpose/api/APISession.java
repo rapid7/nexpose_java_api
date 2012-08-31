@@ -532,6 +532,7 @@ public class APISession
       String engineConfigAddress,
       String engineConfigPort,
       String engineConfigPriority,
+      String engineConfigScope,
       IContentGenerator sitesGenerator)
       throws IOException, APIException
    {
@@ -543,6 +544,7 @@ public class APISession
          engineConfigAddress,
          engineConfigPort,
          engineConfigPriority,
+         engineConfigScope,
          sitesGenerator);
       final APIResponse response = new APIResponse(
          request(open(request), auth(request)),
@@ -712,13 +714,15 @@ public class APISession
    public APIResponse engineDeleteRequest(
       String sessionId,
       String syncId,
-      String engineId)
+      String engineId,
+      String scope)
       throws IOException, APIException
    {
       final TemplateAPIRequest request = new EngineDeleteRequest(
          sessionId,
          syncId,
-         engineId);
+         engineId,
+         scope);
       final APIResponse response = new APIResponse(
          request(open(request), auth(request)),
          request.getRequestXML());

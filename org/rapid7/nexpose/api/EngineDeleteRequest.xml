@@ -1,5 +1,6 @@
 <EngineDeleteRequest 
    session-id="${session-id}"
    sync-id="${sync-id}"
+   scope = "${scope}"
    engine-id="${engineId}"/>
-   
+
