@@ -2064,7 +2064,7 @@ public class APISession
          {
          }
       } };
-      ms_sslContext = SSLContext.getInstance("SSL");
+      ms_sslContext = SSLContext.getInstance("TLS");
       ms_sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
       HttpsURLConnection.setDefaultSSLSocketFactory(
          ms_sslContext.getSocketFactory());
