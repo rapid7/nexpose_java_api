@@ -8,8 +8,7 @@ _**This software is not officially supported by Rapid7 and is made available for
 
 ## Resources
 Use the following to assist in understanding the API's:  
-- [Nexpose API guide version 1.1](http://download2.rapid7.com/download/NeXpose-v4/NeXpose_API_v1.1_Guide.pdf)  
-- [Nexpose API guide version 1.2](http://download2.rapid7.com/download/NeXpose-v4/NeXpose_Extended_API_v1.2_Guide.pdf)
+- [Nexpose API guide](https://community.rapid7.com/docs/DOC-1896)
 
 ## Usage:
 
