@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+
+   <groupId>org.rapid7</groupId>
+   <artifactId>nexpose-java-api</artifactId>
+   <version>1.0.0</version>
+   <packaging>jar</packaging>
+
+   <parent>
+      <groupId>com.rapid7</groupId>
+      <artifactId>java-root-pom</artifactId>
+      <version>1.9.6</version>
+      <relativePath />
+   </parent>
+
+   <scm>
+      <connection>scm:git:git@github.com:rapid7/nexpose_java_api.git</connection>
+      <developerConnection>scm:git:git@github.com:rapid7/nexpose_java_api.git</developerConnection>
+      <url>https://github.com/rapid7/nexpose_java_api</url>
+      <tag>HEAD</tag>
+   </scm>
+
+</project>
