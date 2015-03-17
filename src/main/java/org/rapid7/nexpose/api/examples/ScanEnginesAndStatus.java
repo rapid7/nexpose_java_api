@@ -30,6 +30,7 @@ import org.rapid7.nexpose.api.APISession;
 import org.rapid7.nexpose.api.APISession.APISupportedVersion;
 import org.rapid7.nexpose.api.domain.EngineSummary;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
@@ -70,7 +71,7 @@ public class ScanEnginesAndStatus
     * Gets authenticated session object
     *
     */
-   private APISession getSession(String[] args) throws IOException, APIException
+   private APISession getSession(String[] args) throws MalformedURLException
    {
       URL url = new URL("https://" + args[0].trim() + ":" + args[1].trim());
       APISession session = new APISession(url, "xml", APISupportedVersion.V1_2, args[2].trim(), args[3].trim());

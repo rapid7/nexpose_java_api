@@ -69,10 +69,40 @@ public class BaseElement
             return Integer.parseInt(attributeValue);
          } catch (NumberFormatException nfe)
          {
-            throw new APIException("Cannot parse the respose, the attribute: " 
-               + attributeName 
-               + " is not an integer: "
-               + attributeValue);
+            throw new APIException("Cannot parse the response, the attribute: "
+                                      + attributeName
+                                      + " is not an integer: "
+                                      + attributeValue);
+         }
+      }
+      throw new APIException("The response element and the attribute name should not be null");
+   }
+
+   /**
+    * Retrieves a long representing the attribute value associated with the
+    * parameter of the method.
+    *
+    * @param attributeName the name of the attribute to be retrieved.
+    * @return the long value of the attribute in the element of this response.
+    * @throws APIException when the attribute does not contain a long as value
+    *         or when the attributeName or m_responseElement are null.
+    */
+   public long getLong(String attributeName) throws APIException
+   {
+      String attributeValue = null;
+      if (attributeName != null && m_responseElement != null)
+      {
+         try
+         {
+            attributeValue = m_responseElement.getAttribute(attributeName);
+            return Long.parseLong(attributeValue);
+         }
+         catch (NumberFormatException nfe)
+         {
+            throw new APIException("Cannot parse the response, the attribute: "
+                                      + attributeName
+                                      + " is not a long: "
+                                      + attributeValue);
          }
       }
       throw new APIException("The response element and the attribute name should not be null");
@@ -99,7 +129,7 @@ public class BaseElement
          } 
          catch (NumberFormatException nfe)
          {
-            throw new APIException("Cannot parse the respose, the attribute: " 
+            throw new APIException("Cannot parse the response, the attribute: "
                      + attributeName 
                      + " is not a float: "
                      + attributeValue);
@@ -151,7 +181,7 @@ public class BaseElement
          } 
          catch (NumberFormatException nfe)
          {
-            throw new APIException("Cannot parse the respose, the attribute: " 
+            throw new APIException("Cannot parse the response, the attribute: "
                      + attributeName 
                      + " is not a float: "
                      + attributeValue);

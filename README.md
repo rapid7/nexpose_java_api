@@ -59,9 +59,9 @@ This tool comes with some examples located at:
 
 
 ##### To run an example from the command line:
-1. Compile: 
-`javac org/rapid7/nexpose/api/examples/<Class_Name>.java`
+1. Compile normally: 
+`mvn install`
    
 2. Run with options:
-`java org/rapid7/nexpose/api/examples/<Class_Name> <nexpose_netaddress> <port> <username> <password> <other options if needed>`
+`java -cp target/classes <Class_Name_With_Package> <nexpose_netaddress> <port> <username> <password> <other options if needed>`
 

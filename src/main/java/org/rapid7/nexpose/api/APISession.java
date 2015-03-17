@@ -28,6 +28,7 @@ package org.rapid7.nexpose.api;
 
 import org.rapid7.nexpose.api.domain.AssetGroupSummary;
 import org.rapid7.nexpose.api.domain.EngineSummary;
+import org.rapid7.nexpose.api.domain.ScanSummary;
 import org.rapid7.nexpose.api.domain.SiteSummary;
 import org.rapid7.nexpose.api.domain.TicketSummary;
 import org.rapid7.nexpose.api.domain.UserSummary;
@@ -890,7 +891,7 @@ public class APISession
     *        site to save. This field is optional.
     * @param siteRiskFactor the floating value that represents the risk factor
     *        of the site to save.
-    * @param hostsGenerator a Generator that knows how to output hosts
+    * @param siteHostsHostGenerator a Generator that knows how to output hosts
     *        associated with the site save. e.g.
     *        &lt;host&gt;hostName&lt;host/&gt; where hostName is the name of the
     *        host to assign to the site. Please see
@@ -898,7 +899,7 @@ public class APISession
     *        implementation. For QA testing you should construct your own
     *        {@link IContentGenerator} to generate all the edge test cases you
     *        can think of.
-    * @param rangesGenerator a Generator that knows how to output ranges of
+    * @param siteHostsRangeGenerator a Generator that knows how to output ranges of
     *        hosts that are to be associated with the site save. e.g.
     *        &lt;range from="127.0.0.1" to="127.0.0.2"/&gt;. Please see
     *        {@link SiteSaveRequestRangesGenerator} for a reference
@@ -947,15 +948,15 @@ public class APISession
     *        and for a reference implementation. For QA testing you should
     *        construct your own {@link IContentGenerator} to generate all the
     *        edge test cases you can think of.
-    * @param configName a String that represents the name of the scan
+    * @param siteScanConfigName a String that represents the name of the scan
     *        configuration for the site to be saved.
-    * @param configVersion a positive integer that represents the scan
+    * @param siteScanConfigVersion a positive integer that represents the scan
     *        configuration version of the site to be saved.
-    * @param configId a positive integer that represents the scan
+    * @param siteScanConfigId a positive integer that represents the scan
     *        configuration's id of the site to be saved.
-    * @param configTemplateId a String that represents the template id
+    * @param siteScanConfigTemplateId a String that represents the template id
     *        associated with the scan configuration of the site to be saved.
-    * @param configEngineId a String that represents the engine id associated
+    * @param siteScanConfigEngineId a String that represents the engine id associated
     *        with the scan configuration of the site to be saved. This field is
     *        optional.
     * @param scheduleEnabled 1 to enable the schedule 0 to disable it. This is
@@ -998,8 +999,8 @@ public class APISession
       IContentGenerator credentialsGenerator,
       IContentGenerator alertsGenerator,
       String siteScanConfigName,
-      String siteScanConfigConfigVersion,
-      String siteScanConfigConfigId,
+      String siteScanConfigVersion,
+      String siteScanConfigId,
       String siteScanConfigTemplateId,
       String siteScanConfigEngineId,
       String scheduleEnabled,
@@ -1010,7 +1011,7 @@ public class APISession
       String scheduleMaxDuration,
       String scheduleNotValidAfter) throws IOException, APIException
    {
-      return baiscSiteSaveRequest(
+      return basicSiteSaveRequest(
          sessionId,
          syncId,
          siteId,
@@ -1022,8 +1023,8 @@ public class APISession
          credentialsGenerator,
          alertsGenerator,
          siteScanConfigName,
-         siteScanConfigConfigVersion,
-         siteScanConfigConfigId,
+         siteScanConfigVersion,
+         siteScanConfigId,
          siteScanConfigTemplateId,
          siteScanConfigEngineId,
          scheduleEnabled,
@@ -1055,11 +1056,11 @@ public class APISession
     *        site to save. This field is optional.
     * @param siteRiskFactor the floating value that represents the risk factor
     *        of the site to save.
-    * @param hostsGenerator a Generator that knows how to output hosts
+    * @param siteHostsHostGenerator a Generator that knows how to output hosts
     *        associated with the site save. e.g.
     *        &lt;host&gt;hostName&lt;host/&gt; where hostName is the name of the
     *        host to assign to the site.
-    * @param rangesGenerator a Generator that knows how to output ranges of
+    * @param siteHostsRangeGenerator a Generator that knows how to output ranges of
     *        hosts that are to be associated with the site save. e.g.
     *        &lt;range from="127.0.0.1" to="127.0.0.2"/&gt;.
     * @param credentialsGenerator a Generator that knows how to output
@@ -1095,15 +1096,15 @@ public class APISession
     *           &lt;/Alert&gt;
     *           </LI>
     *        </OL>
-    * @param configName a String that represents the name of the scan
+    * @param siteScanConfigName a String that represents the name of the scan
     *        configuration for the site to be saved.
-    * @param configVersion a positive integer that represents the scan
+    * @param siteScanConfigVersion a positive integer that represents the scan
     *        configuration version of the site to be saved.
-    * @param configId a positive integer that represents the scan
+    * @param siteScanConfigId a positive integer that represents the scan
     *        configuration's id of the site to be saved.
-    * @param configTemplateId a String that represents the template id
+    * @param siteScanConfigTemplateId a String that represents the template id
     *        associated with the scan configuration of the site to be saved.
-    * @param configEngineId a String that represents the engine id associated
+    * @param siteScanConfigEngineId a String that represents the engine id associated
     *        with the scan configuration of the site to be saved. This field is
     *        optional.
     * @param scheduleEnabled 1 to enable the schedule 0 to disable it. This is
@@ -1142,8 +1143,8 @@ public class APISession
       SiteSaveRequestCredentialsGenerator credentialsGenerator,
       SiteSaveRequestAlertsGenerator alertsGenerator,
       String siteScanConfigName,
-      String siteScanConfigConfigVersion,
-      String siteScanConfigConfigId,
+      String siteScanConfigVersion,
+      String siteScanConfigId,
       String siteScanConfigTemplateId,
       String siteScanConfigEngineId,
       String scheduleEnabled,
@@ -1154,29 +1155,29 @@ public class APISession
       String scheduleMaxDuration,
       String scheduleNotValidAfter) throws IOException, APIException
    {
-      return baiscSiteSaveRequest(
-               sessionId,
-               syncId,
-               siteId,
-               siteName,
-               siteDescription,
-               siteRiskFactor,
-               siteHostsHostGenerator,
-               siteHostsRangeGenerator,
-               credentialsGenerator,
-               alertsGenerator,
-               siteScanConfigName,
-               siteScanConfigConfigVersion,
-               siteScanConfigConfigId,
-               siteScanConfigTemplateId,
-               siteScanConfigEngineId,
-               scheduleEnabled,
-               scheduleIncremental,
-               scheduleType,
-               scheduleInterval,
-               scheduleStart,
-               scheduleMaxDuration,
-               scheduleNotValidAfter);
+      return basicSiteSaveRequest(
+         sessionId,
+         syncId,
+         siteId,
+         siteName,
+         siteDescription,
+         siteRiskFactor,
+         siteHostsHostGenerator,
+         siteHostsRangeGenerator,
+         credentialsGenerator,
+         alertsGenerator,
+         siteScanConfigName,
+         siteScanConfigVersion,
+         siteScanConfigId,
+         siteScanConfigTemplateId,
+         siteScanConfigEngineId,
+         scheduleEnabled,
+         scheduleIncremental,
+         scheduleType,
+         scheduleInterval,
+         scheduleStart,
+         scheduleMaxDuration,
+         scheduleNotValidAfter);
             }
 
    /**
@@ -1256,6 +1257,47 @@ public class APISession
             "SiteDeleteRequest failed");
       }
       return response;
+   }
+
+   public List<ScanSummary> siteScanHistoryRequest(
+      String sessionID,
+      String syncID,
+      String siteID)
+      throws IOException, APIException
+   {
+      final TemplateAPIRequest request = new SiteScanHistoryRequest(sessionID, syncID, siteID);
+      final APIResponse response = new APIResponse(
+         request(open(request), auth(request)),
+         request.getRequestXML());
+      if (response.grabNode("//Failure") != null)
+      {
+         m_errorHandler.handleError(
+            request,
+            response,
+            this,
+            "SiteScanHistoryRequest failed");
+      }
+      if (response.grabNode("//Failure") != null)
+      {
+         m_errorHandler.handleError(
+            request,
+            response,
+            this,
+            "EngineListingRequest failed");
+      }
+      final NodeList scans =
+         response.grabNodes("/SiteScanHistoryResponse/ScanSummary");
+      List scanList = new ArrayList<ScanSummary>();
+      if (scans != null)
+      {
+         for (int i = 0; i < scans.getLength(); i++)
+         {
+            Element scanNode = (Element) scans.item(i);
+            ScanSummary scanSummary = new ScanSummary(scanNode);
+            scanList.add(scanSummary);
+         }
+      }
+      return scanList;
    }
 
    /**
@@ -1584,7 +1626,7 @@ public class APISession
     *        site to save. This field is optional.
     * @param siteRiskFactor the floating value that represents the risk factor
     *        of the site to save.
-    * @param hostsGenerator a Generator that knows how to output hosts
+    * @param siteHostsHostGenerator a Generator that knows how to output hosts
     *        associated with the site save. e.g.
     *        &lt;host&gt;hostName&lt;host/&gt; where hostName is the name of the
     *        host to assign to the site. Please see
@@ -1592,7 +1634,7 @@ public class APISession
     *        implementation. For QA testing you should construct your own
     *        {@link IContentGenerator} to generate all the edge test cases you
     *        can think of.
-    * @param rangesGenerator a Generator that knows how to output ranges of
+    * @param siteHostsRangeGenerator a Generator that knows how to output ranges of
     *        hosts that are to be associated with the site save. e.g.
     *        &lt;range from="127.0.0.1" to="127.0.0.2"/&gt;. Please see
     *        {@link SiteSaveRequestRangesGenerator} for a reference
@@ -1641,15 +1683,15 @@ public class APISession
     *        and for a reference implementation. For QA testing you should
     *        construct your own {@link IContentGenerator} to generate all the
     *        edge test cases you can think of.
-    * @param configName a String that represents the name of the scan
+    * @param siteScanConfigName a String that represents the name of the scan
     *        configuration for the site to be saved.
-    * @param configVersion a positive integer that represents the scan
+    * @param siteScanConfigVersion a positive integer that represents the scan
     *        configuration version of the site to be saved.
-    * @param configId a positive integer that represents the scan
+    * @param siteScanConfigId a positive integer that represents the scan
     *        configuration's id of the site to be saved.
-    * @param configTemplateId a String that represents the template id
+    * @param siteScanConfigTemplateId a String that represents the template id
     *        associated with the scan configuration of the site to be saved.
-    * @param configEngineId a String that represents the engine id associated
+    * @param siteScanConfigEngineId a String that represents the engine id associated
     *        with the scan configuration of the site to be saved. This field is
     *        optional.
     * @param scheduleEnabled 1 to enable the schedule 0 to disable it. This is
@@ -1680,7 +1722,7 @@ public class APISession
     * @throws APIException if the API call is not successful or the parsing of
     *         the response is not correct.
     */
-   private APIResponse baiscSiteSaveRequest(
+   private APIResponse basicSiteSaveRequest(
       String sessionId,
       String syncId,
       String siteId,
@@ -1692,8 +1734,8 @@ public class APISession
       IContentGenerator credentialsGenerator,
       IContentGenerator alertsGenerator,
       String siteScanConfigName,
-      String siteScanConfigConfigVersion,
-      String siteScanConfigConfigId,
+      String siteScanConfigVersion,
+      String siteScanConfigId,
       String siteScanConfigTemplateId,
       String siteScanConfigEngineId,
       String scheduleEnabled,
@@ -1717,8 +1759,8 @@ public class APISession
          credentialsGenerator,
          alertsGenerator,
          siteScanConfigName,
-         siteScanConfigConfigVersion,
-         siteScanConfigConfigId,
+         siteScanConfigVersion,
+         siteScanConfigId,
          siteScanConfigTemplateId,
          siteScanConfigEngineId,
          scheduleEnabled,
@@ -1736,8 +1778,6 @@ public class APISession
     * Executes any API Request.
     *
     * @param request the {@link TemplateAPIRequest} to execute.
-    * @param the node that contains the error (usually Failure)
-    * @param the error Message to send to the default error handler.
     *
     * @return an {@link APIResponse} with the request's associated response.
     *
@@ -1965,13 +2005,16 @@ public class APISession
       try
       {
          return DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(reader));
-      } catch (SAXException e)
+      }
+      catch (SAXException e)
       {
          throw new APIException("Error parsing API response", e);
-      } catch (ParserConfigurationException e)
+      }
+      catch (ParserConfigurationException e)
       {
          throw new APIException("Error parsing API response", e);
-      } finally
+      }
+      finally
       {
          reader.close();
       }
@@ -2110,10 +2153,12 @@ public class APISession
       try
       {
          initializeSSL();
-      } catch (KeyManagementException e)
+      }
+      catch (KeyManagementException e)
       {
          throw new RuntimeException("Unable to initialize SSL", e);
-      } catch (NoSuchAlgorithmException e)
+      }
+      catch (NoSuchAlgorithmException e)
       {
          throw new RuntimeException("Unable to initialize SSL", e);
       }

@@ -38,10 +38,10 @@ public class SiteScanHistoryRequest extends TemplateAPIRequest
    /**
     * Creates a new SiteScanHistoryRequest NeXpose API request.
     *
-    * @param sessionId the session to be used if different from the one on the
+    * @param sessionID the session to be used if different from the one on the
     *        current APISession. useful when testing edge cases and testing in
     *        general.
-    * @param syncId the syncId to identify the request/response pair.
+    * @param syncID the syncId to identify the request/response pair.
     * @param siteID the id of the site.
     */
    public SiteScanHistoryRequest(String sessionID, String syncID, String siteID)
