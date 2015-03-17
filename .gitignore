@@ -1,2 +1,9 @@
 #java specific
 *.class
+
+#idea
+.idea
+*.iml
+
+#maven
+target

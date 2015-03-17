@@ -164,7 +164,7 @@ public class APIResponse
       }
       catch (XPathExpressionException e)
       {
-         throw new APIException("Error parsing repsonse", e);
+         throw new APIException("Error parsing response", e);
       }
    }
 
@@ -184,7 +184,7 @@ public class APIResponse
       }
       catch (XPathExpressionException e)
       {
-         throw new APIException("Error parsing repsonse", e);
+         throw new APIException("Error parsing response", e);
       }
    }
 
