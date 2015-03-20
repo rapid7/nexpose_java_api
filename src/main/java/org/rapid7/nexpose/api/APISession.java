@@ -27,6 +27,7 @@
 package org.rapid7.nexpose.api;
 
 import org.rapid7.nexpose.api.domain.AssetGroupSummary;
+import org.rapid7.nexpose.api.domain.DiscoveryConfig;
 import org.rapid7.nexpose.api.domain.EngineSummary;
 import org.rapid7.nexpose.api.domain.ScanSummary;
 import org.rapid7.nexpose.api.domain.SiteSummary;
@@ -1230,6 +1231,7 @@ public class APISession
     * @param syncId the synchronization id to identify the response associated
     *        with the response in asynchronous environments. It can be any
     *        string. This field is optional.
+    * @param siteId id of the site to delete
     * @return The response from the API.
     * @throws IOException When the API call cannot be performed.
     * @throws APIException if the API call is not successful or the parsing of
@@ -1259,6 +1261,21 @@ public class APISession
       return response;
    }
 
+   /**
+    * Retrieve the scan history for a site
+    * @param sessionID the session to be used if different from the current
+    *        acquired one (You acquire one when you authenticate correctly with
+    *        the login method in the {@link APISession} class). This is a
+    *        String of 40 characters.
+    * @param syncID the synchronization id to identify the response associated
+    *        with the response in asynchronous environments. It can be any
+    *        string. This field is optional.
+    * @param siteID id of the site whose history should be retrieved
+    * @returns a list of ScanSummary objects with information about the site's scans
+    * @throws IOException When the API call cannot be performed.
+    * @throws APIException if the API call is not successful or the parsing of
+    *         the response is not correct.
+    */
    public List<ScanSummary> siteScanHistoryRequest(
       String sessionID,
       String syncID,
@@ -1298,6 +1315,60 @@ public class APISession
          }
       }
       return scanList;
+   }
+
+   /**
+    * Retrieve the discovery configs
+    * @param sessionID the session to be used if different from the current
+    *        acquired one (You acquire one when you authenticate correctly with
+    *        the login method in the {@link APISession} class). This is a
+    *        String of 40 characters.
+    * @param syncID the synchronization id to identify the response associated
+    *        with the response in asynchronous environments. It can be any
+    *        string. This field is optional.
+    * @returns a list of ScanSummary objects with information about the site's scans
+    * @throws IOException When the API call cannot be performed.
+    * @throws APIException if the API call is not successful or the parsing of
+    *         the response is not correct.
+    */
+   public List<DiscoveryConfig> discoveryConnectionListingRequest(
+      String sessionID,
+      String syncID)
+      throws IOException, APIException
+   {
+      final TemplateAPIRequest request = new DiscoveryConnectionListingRequest(sessionID, syncID);
+      final APIResponse response = new APIResponse(
+         request(open(request), auth(request)),
+         request.getRequestXML());
+      if (response.grabNode("//Failure") != null)
+      {
+         m_errorHandler.handleError(
+            request,
+            response,
+            this,
+            "SiteScanHistoryRequest failed");
+      }
+      if (response.grabNode("//Failure") != null)
+      {
+         m_errorHandler.handleError(
+            request,
+            response,
+            this,
+            "EngineListingRequest failed");
+      }
+      final NodeList configs =
+         response.grabNodes("/DiscoveryConnectionListingResponse/DiscoveryConnectionSummary");
+      List configList = new ArrayList<DiscoveryConfig>();
+      if (configs != null)
+      {
+         for (int i = 0; i < configs.getLength(); i++)
+         {
+            Element configNode = (Element) configs.item(i);
+            DiscoveryConfig discoveryConfig = new DiscoveryConfig(configNode);
+            configList.add(discoveryConfig);
+         }
+      }
+      return configList;
    }
 
    /**
