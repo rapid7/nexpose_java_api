@@ -27,7 +27,7 @@ public class SiteScanHistory
       APISession session = getSession(args);
       String sessionID = session.getSessionID();
 
-      List<ScanSummary> summaries = session.siteScanHistoryRequest(sessionID, null, "3");
+      List<ScanSummary> summaries = session.siteScanHistoryRequest(sessionID, null, "1");
 
       System.out.println("\n***SCAN_ID START_TIME END_TIME STATUS ***");
       for (ScanSummary scanSummary: summaries)
